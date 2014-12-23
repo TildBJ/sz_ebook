@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'eBook',
-	'description' => 'Converts PDF\'s to eBook, using turn.js. Visist us on http://www.sunzinet.com/',
+	'description' => 'Converts PDF\'s to eBook, using turn.js. Visist us on http://www.sunzinet.com/ Visit us on <a href="http://www.sunzinet.com/" target="_blank">sunzinet AG</a> - <a href="http://www.sunzinet.com/typo3-agentur.html" target="_blank">Typo3 Agentur</a>',
 	'category' => 'plugin',
 	'author' => 'Dennis Römmich',
 	'author_email' => 'dennis.roemmich@sunzinet.com',
@@ -27,7 +27,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '1.0.2',
+	'version' => '1.0.3',
 	'constraints' => array(
 		'depends' => array(
 			'extbase' => '1.3',
