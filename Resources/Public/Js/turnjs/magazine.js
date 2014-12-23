@@ -33,7 +33,7 @@ function loadPage(page, pageElement) {
 	});
 
 	img.load(function() {
-		
+
 		// Set the size
 		$(this).css({width: '100%', height: '100%'});
 
@@ -42,7 +42,7 @@ function loadPage(page, pageElement) {
 		$(this).appendTo(pageElement);
 
 		// Remove the loader indicator
-		
+
 		pageElement.find('.loader').remove();
 	});
 
@@ -90,7 +90,7 @@ function loadRegions(page, element) {
 // Add region
 
 function addRegion(region, pageElement) {
-	
+
 	var reg = $('<div />', {'class': 'region  ' + region['class']}),
 		options = $('.magazine').turn('options'),
 		pageWidth = options.width/2,
@@ -116,11 +116,11 @@ function regionClick(event) {
 	if (region.hasClass('region')) {
 
 		$('.magazine-viewport').data().regionClicked = true;
-		
+
 		setTimeout(function() {
 			$('.magazine-viewport').data().regionClicked = false;
 		}, 100);
-		
+
 		var regionType = $.trim(region.attr('class').replace('region', ''));
 
 		return processRegion(region, regionType);
@@ -165,7 +165,7 @@ function processRegion(region, regionType) {
 // Load large page
 
 function loadLargePage(page, pageElement) {
-	
+
 	var img = $('<img />');
 
 	img.load(function() {
@@ -174,18 +174,18 @@ function loadLargePage(page, pageElement) {
 		$(this).css({width: '100%', height: '100%'});
 		$(this).appendTo(pageElement);
 		prevImg.remove();
-		
+
 	});
 
 	// Loadnew page
-	
+
 	img.attr('src', 'pages/' +  page + '-large.jpg');
 }
 
 // Load small page
 
 function loadSmallPage(page, pageElement) {
-	
+
 	var img = pageElement.find('img');
 
 	img.css({width: '100%', height: '100%'});
@@ -209,7 +209,7 @@ function disableControls(page) {
 			$('.previous-button').hide();
 		else
 			$('.previous-button').show();
-					
+
 		if (page==$('.magazine').turn('pages'))
 			$('.next-button').hide();
 		else
@@ -244,7 +244,7 @@ function resizeViewport() {
 		if (bound.width%2!==0)
 			bound.width-=1;
 
-			
+
 		if (bound.width!=$('.magazine').width() || bound.height!=$('.magazine').height()) {
 
 			$('.magazine').turn('size', bound.width, bound.height);
@@ -276,7 +276,7 @@ function resizeViewport() {
 		$('.made').show();
 
 	$('.magazine').addClass('animated');
-	
+
 }
 
 
@@ -339,7 +339,7 @@ function setPreview(view) {
 // Width of the flipbook when zoomed in
 
 function largeMagazineWidth() {
-	
+
 	return 2214;
 
 }
@@ -361,25 +361,25 @@ function decodeParams(data) {
 // Calculate the width and height of a square within another square
 
 function calculateBound(d) {
-	
+
 	var bound = {width: d.width, height: d.height};
 
 	if (bound.width>d.boundWidth || bound.height>d.boundHeight) {
-		
+
 		var rel = bound.width/bound.height;
 
 		if (d.boundWidth/rel>d.boundHeight && d.boundHeight*rel<=d.boundWidth) {
-			
+
 			bound.width = Math.round(d.boundHeight*rel);
 			bound.height = d.boundHeight;
 
 		} else {
-			
+
 			bound.width = d.boundWidth;
 			bound.height = Math.round(d.boundWidth/rel);
-		
+
 		}
 	}
-		
+
 	return bound;
 }

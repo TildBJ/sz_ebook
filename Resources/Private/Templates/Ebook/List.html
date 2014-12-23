@@ -2,24 +2,26 @@
 
 <f:section name="main">
 
-<f:flashMessages />
+	<f:flashMessages />
+
+	<div class="zoom-icon zoom-icon-in"></div>
 
 	<div class="magazine-viewport">
 		<h2 class="heading teaser"><span>{ebook.header}</span></h2>
 		<div class="progress">
 			<div class="progress-bar"></div>
 		</div>
-		<div class="magazine" id="viewer">
+		<div class="container">
+			<div class="magazine" id="viewer">
+
+			</div>
 		</div>
 	</div>
+
 	<script>
-		PDFJS.workerSrc = '/typo3conf/ext/sz_ebook/Resources/Public/Js/worker_loader.js';
+		PDFJS.workerSrc = '/typo3conf/ext/sz_ebook/Resources/Public/Js/pdf/worker_loader.js';
 		var pdfWithFormsPath = '/uploads/tx_szebook/{ebook.pdf}';
 	</script>
-	<script src="/typo3conf/ext/sz_ebook/Resources/Public/Js/forms.js"></script>
-	<!--<f:link.page pageUid="/uploads/tx_szebook/{path}" target="_blank"><f:image alt="{path}" src="uploads/tx_szebook/{ebook.image}" /></f:link.page>-->
-	<!--<p>-->
-		<!--<f:link.page pageUid="/uploads/tx_szebook/{ebook.pdf}" target="_blank" class="more"><f:translate key="tx_szebook_domain_model_ebook.more" /></f:link.page>-->
-	<!--</p>-->
+	<script src="/typo3conf/ext/sz_ebook/Resources/Public/Js/pdf/forms.js"></script>
 
 </f:section>

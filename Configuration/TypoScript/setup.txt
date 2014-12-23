@@ -22,14 +22,20 @@ page.includeCSS {
 }
 
 page.includeJS {
-	util = EXT:sz_ebook/Resources/Public/Js/shared/util.js
-	api = EXT:sz_ebook/Resources/Public/Js/display/api.js
-	metadata = EXT:sz_ebook/Resources/Public/Js/display/metadata.js
-	canvas = EXT:sz_ebook/Resources/Public/Js/display/canvas.js
-	webgl = EXT:sz_ebook/Resources/Public/Js/display/webgl.js
-	pattern_helper = EXT:sz_ebook/Resources/Public/Js/display/pattern_helper.js
-	font_loader = EXT:sz_ebook/Resources/Public/Js/display/font_loader.js
-	annotation_helper = EXT:sz_ebook/Resources/Public/Js/display/annotation_helper.js
+	#pdf.js
+	util = EXT:sz_ebook/Resources/Public/Js/pdf/shared/util.js
+	api = EXT:sz_ebook/Resources/Public/Js/pdf/display/api.js
+	metadata = EXT:sz_ebook/Resources/Public/Js/pdf/display/metadata.js
+	canvas = EXT:sz_ebook/Resources/Public/Js/pdf/display/canvas.js
+	webgl = EXT:sz_ebook/Resources/Public/Js/pdf/display/webgl.js
+	pattern_helper = EXT:sz_ebook/Resources/Public/Js/pdf/display/pattern_helper.js
+	font_loader = EXT:sz_ebook/Resources/Public/Js/pdf/display/font_loader.js
+	annotation_helper = EXT:sz_ebook/Resources/Public/Jspdf//display/annotation_helper.js
 
-	turnjs = EXT:sz_ebook/Resources/Public/Js/turn.min.js
+	#turn.js
+	hash = EXT:sz_ebook/Resources/Public/Js/turnjs/hash.js
+	magazine = EXT:sz_ebook/Resources/Public/Js/turnjs/magazine.js
+	zoom = EXT:sz_ebook/Resources/Public/Js/turnjs/zoom.min.js
+	scissor = EXT:sz_ebook/Resources/Public/Js/turnjs/scissor.min.js
+	turnjs = EXT:sz_ebook/Resources/Public/Js/turnjs/turn.min.js
 }
