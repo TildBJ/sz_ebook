@@ -57,7 +57,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	/**
 	 * turnjs
 	 *
-	 * @var int
+	 * @var bool
 	 */
 	protected $turnjs;
 
@@ -74,10 +74,12 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	 * Sets the image
 	 *
 	 * @param string $image
-	 * @return void
+	 * @return Tx_SzEbook_Domain_Model_Ebook
 	 */
 	public function setImage($image) {
 		$this->image = $image;
+
+		return $this;
 	}
 
 	/**
@@ -93,10 +95,12 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	 * Sets the pdf
 	 *
 	 * @param string $pdf
-	 * @return void
+	 * @return Tx_SzEbook_Domain_Model_Ebook
 	 */
 	public function setPdf($pdf) {
 		$this->pdf = $pdf;
+
+		return $this;
 	}
 
 	/**
@@ -112,29 +116,28 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	 * Sets the header
 	 *
 	 * @param string $header
-	 * @return void
+	 * @return Tx_SzEbook_Domain_Model_Ebook
 	 */
 	public function setHeader($header) {
 		$this->header = $header;
+
+		return $this;
 	}
 
 	/**
-	 * Returns the turnjs
+	 * Sets or returns Turnjs
 	 *
-	 * @return int $turnjs
+	 * @param bool $isTurnjs
+	 * @return Tx_SzEbook_Domain_Model_Ebook|bool
 	 */
-	public function getTurnjs() {
-		return $this->turnjs;
-	}
+	public function isTurnjs($isTurnjs = false) {
+		if(!$isTurnjs) {
+			return $this->turnjs;
+		}
 
-	/**
-	 * Sets the turnjs
-	 *
-	 * @param int $turnjs
-	 * @return void
-	 */
-	public function setTurnjs($turnjs) {
-		$this->turnjs = $turnjs;
+		$this->turnjs = $isTurnjs;
+
+		return $this;
 	}
 
 }

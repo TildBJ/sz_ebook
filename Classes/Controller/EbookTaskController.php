@@ -82,7 +82,7 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 		$this->settings = $this->extbaseFrameworkConfiguration['settings'];
 		$this->templatePath = $this->extbaseFrameworkConfiguration['view'];
 
-		if(!$this->settings) {
+		if(!$this->templatePath) {
 			$message = 'No TypoScript template found!';
 			throw new RuntimeException($message);
 		}
@@ -112,12 +112,11 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 
 				$this->saveImg($file, $path, $img->getnumberimages());
 
-				$pdf->setTurnjs(1);
+				$pdf->isTurnjs(true);
 				$this->ebookRepository->update($pdf);
 				return true;
 			} else {
-
-				$pdf->setTurnjs(1);
+				$pdf->isTurnjs(true);
 				$this->ebookRepository->update($pdf);
 				return false;
 			}
