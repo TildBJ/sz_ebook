@@ -16,3 +16,20 @@ plugin.tx_szebook {
 
 	}
 }
+
+page.includeCSS {
+	sz_ebook = EXT:sz_ebook/Resources/Public/Css/main.css
+}
+
+page.includeJS {
+	util = EXT:sz_ebook/Resources/Public/Js/shared/util.js
+	api = EXT:sz_ebook/Resources/Public/Js/display/api.js
+	metadata = EXT:sz_ebook/Resources/Public/Js/display/metadata.js
+	canvas = EXT:sz_ebook/Resources/Public/Js/display/canvas.js
+	webgl = EXT:sz_ebook/Resources/Public/Js/display/webgl.js
+	pattern_helper = EXT:sz_ebook/Resources/Public/Js/display/pattern_helper.js
+	font_loader = EXT:sz_ebook/Resources/Public/Js/display/font_loader.js
+	annotation_helper = EXT:sz_ebook/Resources/Public/Js/display/annotation_helper.js
+
+	turnjs = EXT:sz_ebook/Resources/Public/Js/turn.min.js
+}

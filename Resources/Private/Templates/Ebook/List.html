@@ -4,17 +4,22 @@
 
 <f:flashMessages />
 
-	<h2 class="heading teaser"><span>{ebook.header}</span></h2>
-	<f:if condition="{ebook.turnjs}">
-		<f:then>
-			<f:link.page pageUid="/uploads/tx_szebook/{path}" target="_blank"><f:image alt="{path}" src="uploads/tx_szebook/{ebook.image}" /></f:link.page>
-		</f:then>
-		<f:else>
-			<f:link.page pageUid="/uploads/tx_szebook/{ebook.pdf}" target="_blank"><f:image alt="{ebook.pdf}" src="uploads/tx_szebook/{ebook.image}" /></f:link.page>
-		</f:else>
-	</f:if>
-	<p>
-		<f:link.page pageUid="/uploads/tx_szebook/{ebook.pdf}" target="_blank" class="more"><f:translate key="tx_szebook_domain_model_ebook.more" /></f:link.page>
-	</p>
+	<div class="magazine-viewport">
+		<h2 class="heading teaser"><span>{ebook.header}</span></h2>
+		<div class="progress">
+			<div class="progress-bar"></div>
+		</div>
+		<div class="magazine" id="viewer">
+		</div>
+	</div>
+	<script>
+		PDFJS.workerSrc = '/typo3conf/ext/sz_ebook/Resources/Public/Js/worker_loader.js';
+		var pdfWithFormsPath = '/uploads/tx_szebook/{ebook.pdf}';
+	</script>
+	<script src="/typo3conf/ext/sz_ebook/Resources/Public/Js/forms.js"></script>
+	<!--<f:link.page pageUid="/uploads/tx_szebook/{path}" target="_blank"><f:image alt="{path}" src="uploads/tx_szebook/{ebook.image}" /></f:link.page>-->
+	<!--<p>-->
+		<!--<f:link.page pageUid="/uploads/tx_szebook/{ebook.pdf}" target="_blank" class="more"><f:translate key="tx_szebook_domain_model_ebook.more" /></f:link.page>-->
+	<!--</p>-->
 
 </f:section>
