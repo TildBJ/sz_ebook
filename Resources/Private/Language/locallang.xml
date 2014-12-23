@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the PDF Book extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_szebook_domain_model_ebook">Pdfbook</label>
+			<label index="tx_szebook_domain_model_ebook.image">Image</label>
+			<label index="tx_szebook_domain_model_ebook.pdf">pdf</label>
+			<label index="tx_szebook_domain_model_ebook.header">Header</label>
+			<label index="tx_szebook_domain_model_ebook.more">more</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_szebook_domain_model_ebook">Pdfbook</label>
+			<label index="tx_szebook_domain_model_ebook.image">Vorschau Bild</label>
+			<label index="tx_szebook_domain_model_ebook.pdf">PDF</label>
+			<label index="tx_szebook_domain_model_ebook.header">Überschrift</label>
+			<label index="tx_szebook_domain_model_ebook.more">mehr Informationen</label>
+		</languageKey>
+	</data>
+</T3locallang>

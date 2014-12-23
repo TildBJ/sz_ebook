@@ -1,0 +1,17 @@
+plugin.tx_szebook {
+	view {
+		# cat=plugin.tx_szebook/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:sz_ebook/Resources/Private/Templates/
+		# cat=plugin.tx_szebook/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:sz_ebook/Resources/Private/Partials/
+		# cat=plugin.tx_szebook/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:sz_ebook/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_szebook//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	settings {
+
+	}
+}

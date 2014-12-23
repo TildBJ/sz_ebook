@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'sz_ebook'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_szebook_domain_model_ebook">eBook</label>
+			<label index="tx_szebook_domain_model_ebook.pdf">Pdf</label>
+			<label index="tx_szebook_domain_model_ebook.header">Header</label>
+			<label index="tx_szebook_domain_model_ebook.image">Preview Image</label>
+		</languageKey>
+
+		<languageKey index="default" type="array">
+			<label index="tx_szebook_domain_model_ebook">eBook</label>
+			<label index="tx_szebook_domain_model_ebook.pdf">Pdf</label>
+			<label index="tx_szebook_domain_model_ebook.header">Header</label>
+			<label index="tx_szebook_domain_model_ebook.image">Vorschaubild</label>
+		</languageKey>
+	</data>
+</T3locallang>

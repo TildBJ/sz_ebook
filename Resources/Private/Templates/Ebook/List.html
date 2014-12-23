@@ -1,0 +1,20 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<f:flashMessages />
+
+	<h2 class="heading teaser"><span>{ebook.header}</span></h2>
+	<f:if condition="{ebook.turnjs}">
+		<f:then>
+			<f:link.page pageUid="/uploads/tx_szebook/{path}" target="_blank"><f:image alt="{path}" src="uploads/tx_szebook/{ebook.image}" /></f:link.page>
+		</f:then>
+		<f:else>
+			<f:link.page pageUid="/uploads/tx_szebook/{ebook.pdf}" target="_blank"><f:image alt="{ebook.pdf}" src="uploads/tx_szebook/{ebook.image}" /></f:link.page>
+		</f:else>
+	</f:if>
+	<p>
+		<f:link.page pageUid="/uploads/tx_szebook/{ebook.pdf}" target="_blank" class="more"><f:translate key="tx_szebook_domain_model_ebook.more" /></f:link.page>
+	</p>
+
+</f:section>

@@ -1,0 +1,18 @@
+plugin.tx_szebook {
+	view {
+		templateRootPath = {$plugin.tx_szebook.view.templateRootPath}
+		partialRootPath = {$plugin.tx_szebook.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_szebook.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_szebook.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+
+	settings {
+
+	}
+}
