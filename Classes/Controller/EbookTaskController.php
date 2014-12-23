@@ -41,6 +41,27 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 	protected $ebookRepository;
 
 	/**
+	 * TypoScript Settings
+	 *
+	 * @var array $settings
+	 */
+	protected $settings = null;
+
+	/**
+	 * TypoScript templatePath
+	 *
+	 * @var array $templatePath
+	 */
+	protected $templatePath;
+
+	/**
+	 * Config
+	 *
+	 * @var array $extbaseFrameworkConfiguration
+	 */
+	protected $extbaseFrameworkConfiguration;
+
+	/**
 	 * injectEbookRepository
 	 *
 	 * @param Tx_SzEbook_Domain_Repository_EbookRepository $ebookRepository
@@ -51,12 +72,22 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 	}
 
 	/**
-	 * Konvertiert PDF#s zu Turnjs
+	 * Converts PDF to turnjs eBook
 	 *
 	 * @return bool
+	 * @throws RuntimeException
 	 */
 	public function convertAction() {
-		$fluid = $this->setTemplate('EXT:sz_ebook/Resources/Private/Templates/');
+		$this->extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(Tx_Extbase_Configuration_ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+		$this->settings = $this->extbaseFrameworkConfiguration['settings'];
+		$this->templatePath = $this->extbaseFrameworkConfiguration['view'];
+
+		if(!$this->settings) {
+			$message = 'No TypoScript template found!';
+			throw new RuntimeException($message);
+		}
+
+		$fluid = $this->setTemplate($this->templatePath['templateRootPath']);
 		/** @var $pdf Tx_SzEbook_Domain_Model_Ebook */
 		$pdf = $this->ebookRepository->findTask();
 
