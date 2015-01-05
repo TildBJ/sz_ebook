@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'eBook',
-	'description' => 'Converts PDF\'s to eBook, using turn.js, based on Extbase and Fluid. Works with Tablets and Smartphones.',
+	'description' => 'Shows eBooks in your browser, using turn.js and pdf.js, based on Extbase and Fluid. Works with Tablets and Smartphones.',
 	'category' => 'plugin',
 	'author' => 'Dennis Römmich',
 	'author_email' => 'dennis.roemmich@sunzinet.com',
