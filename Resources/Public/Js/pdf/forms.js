@@ -103,18 +103,16 @@ function setupForm(div, content, viewport) {
 
 function renderPage(div, pdf, pageNumber, callback) {
   pdf.getPage(pageNumber).then(function(page) {
-    var scale = 1;
+    var scale = $('#viewer').attr('data-scale');
     var viewport = page.getViewport(scale);
 
     var pageDisplayWidth = viewport.width;
-    //var pageDisplayWidth = jQuery(div).width();
     var pageDisplayHeight = viewport.height;
-    //var pageDisplayHeight = jQuery(div).height();
 
     var pageDivHolder = document.createElement('div');
     pageDivHolder.className = 'pdfpage';
-    pageDivHolder.style.width = '50%';
-    //pageDivHolder.style.height = pageDisplayHeight + 'px';
+    pageDivHolder.style.width = pageDisplayWidth + 'px';
+    pageDivHolder.style.height = pageDisplayHeight + 'px';
     div.appendChild(pageDivHolder);
 
     // Prepare canvas using PDF page dimensions
@@ -169,6 +167,9 @@ function showEbook() {
   var height = $('canvas').height();
   var width = ($('canvas').width() * 2);
 
+  $('.hard img').width(width/2);
+  $('.hard img').height(height);
+
   function loadApp() {
 	viewer.turn({
         width:width,
@@ -204,69 +205,6 @@ function showEbook() {
             }
         }
 	});
-
-
-	$('.magazine-viewport').zoom({
-		flipbook: $('.magazine'),
-
-		max: function() {
-			return largeMagazineWidth()/$('.magazine').width();
-		},
-
-		when: {
-			swipeLeft: function() {
-				$(this).zoom('flipbook').turn('next');
-			},
-
-			swipeRight: function() {
-				$(this).zoom('flipbook').turn('previous');
-			},
-
-			resize: function(event, scale, page, pageElement) {
-				if (scale==1)
-					loadSmallPage(page, pageElement);
-				else
-					loadLargePage(page, pageElement);
-			},
-
-			zoomIn: function () {
-				$('#slider-bar').hide();
-				$('.made').hide();
-				$('.magazine').removeClass('animated').addClass('zoom-in');
-				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
-
-				if (!window.escTip && !$.isTouch) {
-					//escTip = true;
-
-					$('<div />', {'class': 'exit-message'}).
-						html('<div>Press ESC to exit</div>').
-							appendTo($('body')).
-							delay(2000).
-							animate({opacity:0}, 500, function() {
-								$(this).remove();
-							});
-				}
-			},
-
-			zoomOut: function () {
-				$('#slider-bar').fadeIn();
-				$('.exit-message').hide();
-				$('.made').fadeIn();
-				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
-
-				setTimeout(function(){
-					$('.magazine').addClass('animated').removeClass('zoom-in');
-					resizeViewport();
-				}, 0);
-
-			}
-		}
-	});
-
-    if ($.isTouch)
-		$('.magazine-viewport').bind('zoom.doubleTap', zoomTo);
-	else
-		$('.magazine-viewport').bind('zoom.tap', zoomTo);
 
     $(document).keydown(function(e){
 		var previous = 37, next = 39, esc = 27;

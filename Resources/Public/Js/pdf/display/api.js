@@ -150,7 +150,7 @@ PDFJS.verbosity = (PDFJS.verbosity === undefined ?
                    PDFJS.VERBOSITY_LEVELS.warnings : PDFJS.verbosity);
 
 /**
- * The maximum supported canvas size in total pixels e.g. width * height. 
+ * The maximum supported canvas size in total pixels e.g. width * height.
  * The default value is 4096 * 4096. Use -1 for no limit.
  * @var {number}
  */
@@ -433,7 +433,7 @@ var PDFDocumentProxy = (function PDFDocumentProxyClosure() {
  *                      rendering call the function that is the first argument
  *                      to the callback.
  */
- 
+
 /**
  * PDF page operator list.
  *
@@ -1422,8 +1422,33 @@ var InternalRenderTask = (function InternalRenderTaskClosure() {
     },
 
     _scheduleNext: function InternalRenderTask__scheduleNext() {
+
+      var lastTime = 0;
+      var vendors = ['ms', 'moz', 'webkit', 'o'];
+      for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+          window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+          window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+                                     || window[vendors[x]+'CancelRequestAnimationFrame'];
+      }
+
+      if(window.opera || navigator.userAgent.indexOf('Safari') != -1) {
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+      }
+
       window.requestAnimationFrame(this._nextBound);
-    },
+
+      if (!window.cancelAnimationFrame)
+          window.cancelAnimationFrame = function(id) {
+              clearTimeout(id);
+          };
+      },
 
     _next: function InternalRenderTask__next() {
       if (this.cancelled) {

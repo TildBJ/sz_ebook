@@ -25,11 +25,10 @@
  ***************************************************************/
 
 /**
- *
+ * Class Tx_SzEbook_Domain_Model_Ebook
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
  */
 class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEntity {
 
@@ -60,6 +59,13 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	 * @var bool
 	 */
 	protected $turnjs;
+
+	/**
+	 * scale
+	 *
+	 * @var double2
+	 */
+	protected $scale;
 
 	/**
 	 * Returns the image
@@ -140,5 +146,25 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 		return $this;
 	}
 
+	/**
+	 * Gets the scale
+	 *
+	 * @return double2
+	 */
+	public function getScale() {
+		return $this->scale;
+	}
+
+	/**
+	 * Sets the scale
+	 *
+	 * @param double2 $scale
+	 * @return Tx_SzEbook_Domain_Model_Ebook
+	 */
+	public function setScale($scale) {
+		$this->scale = $scale;
+
+		return $this;
+	}
+
 }
-?>

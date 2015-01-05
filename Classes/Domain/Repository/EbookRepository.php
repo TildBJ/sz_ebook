@@ -25,11 +25,10 @@
  ***************************************************************/
 
 /**
- *
+ * Class Tx_SzEbook_Domain_Repository_EbookRepository
  *
  * @package sz_pdfbook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
  */
 class Tx_SzEbook_Domain_Repository_EbookRepository extends Tx_Extbase_Persistence_Repository {
 
@@ -52,4 +51,3 @@ class Tx_SzEbook_Domain_Repository_EbookRepository extends Tx_Extbase_Persistenc
 	}
 
 }
-?>

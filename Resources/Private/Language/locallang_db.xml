@@ -10,6 +10,7 @@
 			<label index="tx_szebook_domain_model_ebook.pdf">Pdf</label>
 			<label index="tx_szebook_domain_model_ebook.header">Header</label>
 			<label index="tx_szebook_domain_model_ebook.image">Preview Image</label>
+			<label index="tx_szebook_domain_model_ebook.scale">Scale</label>
 		</languageKey>
 
 		<languageKey index="default" type="array">
@@ -17,6 +18,7 @@
 			<label index="tx_szebook_domain_model_ebook.pdf">Pdf</label>
 			<label index="tx_szebook_domain_model_ebook.header">Header</label>
 			<label index="tx_szebook_domain_model_ebook.image">Vorschaubild</label>
+			<label index="tx_szebook_domain_model_ebook.scale">Skalieren</label>
 		</languageKey>
 	</data>
 </T3locallang>

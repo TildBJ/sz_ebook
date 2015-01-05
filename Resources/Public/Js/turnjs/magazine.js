@@ -54,28 +54,7 @@ function loadPage(page, pageElement) {
 
 }
 
-// Zoom in / Zoom out
-
-function zoomTo(event) {
-
-		setTimeout(function() {
-			if ($('.magazine-viewport').data().regionClicked) {
-				$('.magazine-viewport').data().regionClicked = false;
-			} else {
-				if ($('.magazine-viewport').zoom('value')==1) {
-					$('.magazine-viewport').zoom('zoomIn', event);
-				} else {
-					$('.magazine-viewport').zoom('zoomOut');
-				}
-			}
-		}, 1);
-
-}
-
-
-
 // Load regions
-
 function loadRegions(page, element) {
 
 	$.getJSON('pages/'+page+'-regions.json').
@@ -88,7 +67,6 @@ function loadRegions(page, element) {
 }
 
 // Add region
-
 function addRegion(region, pageElement) {
 
 	var reg = $('<div />', {'class': 'region  ' + region['class']}),

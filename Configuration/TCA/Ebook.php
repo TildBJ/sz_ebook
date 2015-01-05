@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_szebook_domain_model_ebook'] = array(
 	'ctrl' => $TCA['tx_szebook_domain_model_ebook']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, image, pdf, header',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, image, pdf, header, scale',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, header, image, pdf,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, header, image, pdf, scale,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -94,7 +94,7 @@ $TCA['tx_szebook_domain_model_ebook'] = array(
 			),
 		),
 		'image' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.image',
 			'config' => array(
 				'type' => 'group',
@@ -103,7 +103,7 @@ $TCA['tx_szebook_domain_model_ebook'] = array(
 				'allowed' => 'jpg,jpeg,png',
 				'disallowed' => 'php',
 				'size' => 1,
-				'minitems' => 1,
+				'minitems' => 0,
 				'maxitems' => 1,
 				'show_thumbs' => 0,
 			),
@@ -129,11 +129,18 @@ $TCA['tx_szebook_domain_model_ebook'] = array(
 				'type' => 'input',
 			),
 		),
-		'turnjs' => array(
+		'scale' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.header',
+			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.scale',
 			'config' => array(
 				'type' => 'input',
+				'default' => 0.6,
+				'eval' => 'double',
+				'size' => 4,
+				'range' => array(
+					'lower' => 0.1,
+					'upper' => 2
+				),
 			),
 		)
 	),

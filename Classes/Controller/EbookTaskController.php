@@ -25,11 +25,10 @@
  ***************************************************************/
 
 /**
- *
+ * Class Tx_SzEbook_Controller_EbookTaskController
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
  */
 class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controller_ActionController {
 

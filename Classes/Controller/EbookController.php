@@ -25,11 +25,10 @@
  ***************************************************************/
 
 /**
- *
+ * Class Tx_SzEbook_Controller_EbookController
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
  */
 class Tx_SzEbook_Controller_EbookController extends Tx_Extbase_MVC_Controller_ActionController {
 
@@ -56,7 +55,6 @@ class Tx_SzEbook_Controller_EbookController extends Tx_Extbase_MVC_Controller_Ac
 	 * @return void
 	 */
 	public function listAction() {
-
 		/** @var $ebook Tx_SzEbook_Domain_Model_Ebook */
 		$ebook = $this->ebookRepository->findByUid($this->settings['pdf']);
 
@@ -70,4 +68,3 @@ class Tx_SzEbook_Controller_EbookController extends Tx_Extbase_MVC_Controller_Ac
 	}
 
 }
-?>
