@@ -50,11 +50,11 @@ class Tx_SzEbook_Controller_EbookController extends Tx_Extbase_MVC_Controller_Ac
 	}
 
 	/**
-	 * action list
+	 * action show
 	 *
 	 * @return void
 	 */
-	public function listAction() {
+	public function showAction() {
 		/** @var $ebook Tx_SzEbook_Domain_Model_Ebook */
 		$ebook = $this->ebookRepository->findByUid($this->settings['pdf']);
 
