@@ -17,25 +17,20 @@ plugin.tx_szebook {
 	}
 }
 
+page.headerData.1 = TEXT
+page.headerData.1.value = <link rel="resource" type="application/l10n" href="typo3conf/ext/sz_ebook/Resources/Public/Js/pdf/locale/locale.properties" />
+
 page.includeCSS {
+	viewer = EXT:sz_ebook/Resources/Public/Css/viewer.css
 	sz_ebook = EXT:sz_ebook/Resources/Public/Css/main.css
 }
 
 page.includeJS {
-	#pdf.js
-	util = EXT:sz_ebook/Resources/Public/Js/pdf/shared/util.js
-	api = EXT:sz_ebook/Resources/Public/Js/pdf/display/api.js
-	metadata = EXT:sz_ebook/Resources/Public/Js/pdf/display/metadata.js
-	canvas = EXT:sz_ebook/Resources/Public/Js/pdf/display/canvas.js
-	webgl = EXT:sz_ebook/Resources/Public/Js/pdf/display/webgl.js
-	pattern_helper = EXT:sz_ebook/Resources/Public/Js/pdf/display/pattern_helper.js
-	font_loader = EXT:sz_ebook/Resources/Public/Js/pdf/display/font_loader.js
-	annotation_helper = EXT:sz_ebook/Resources/Public/Jspdf//display/annotation_helper.js
+	compatibility = EXT:sz_ebook/Resources/Public/Js/pdf/compatibility.js
+	l10n = EXT:sz_ebook/Resources/Public/Js/pdf/l10n.js
+	pdf = EXT:sz_ebook/Resources/Public/Js/pdf/build/pdf.js
+	worker = EXT:sz_ebook/Resources/Public/Js/pdf/build/pdf.worker.js
+#	viewer = EXT:sz_ebook/Resources/Public/Js/pdf/viewer.js
 
-	#turn.js
-	hash = EXT:sz_ebook/Resources/Public/Js/turnjs/hash.js
-	magazine = EXT:sz_ebook/Resources/Public/Js/turnjs/magazine.js
-	zoom = EXT:sz_ebook/Resources/Public/Js/turnjs/zoom.min.js
-	scissor = EXT:sz_ebook/Resources/Public/Js/turnjs/scissor.min.js
 	turnjs = EXT:sz_ebook/Resources/Public/Js/turnjs/turn.min.js
 }

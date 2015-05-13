@@ -9,7 +9,7 @@ CREATE TABLE tx_szebook_domain_model_ebook (
 	image text NOT NULL,
 	pdf text NOT NULL,
 	header varchar(255) DEFAULT '' NOT NULL,
-	scale DOUBLE DEFAULT 0.6 NOT NULL,
+	scale double DEFAULT '0.6' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
