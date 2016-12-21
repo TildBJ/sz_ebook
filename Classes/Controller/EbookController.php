@@ -1,4 +1,5 @@
 <?php
+namespace Sunzinet\SzEbook\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -24,28 +25,30 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Sunzinet\SzEbook\Domain\Model\Ebook;
+use Sunzinet\SzEbook\Domain\Repository\EbookRepository;
 /**
  * Class Tx_SzEbook_Controller_EbookController
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_SzEbook_Controller_EbookController extends Tx_Extbase_MVC_Controller_ActionController {
+class EbookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * ebookRepository
 	 *
-	 * @var Tx_SzEbook_Domain_Repository_EbookRepository
+	 * @var EbookRepository
 	 */
 	protected $ebookRepository;
 
 	/**
 	 * injectEbookRepository
 	 *
-	 * @param Tx_SzEbook_Domain_Repository_EbookRepository $ebookRepository
+	 * @param EbookRepository $ebookRepository
 	 * @return void
 	 */
-	public function injectEbookRepository(Tx_SzEbook_Domain_Repository_EbookRepository $ebookRepository) {
+	public function injectEbookRepository(EbookRepository $ebookRepository) {
 		$this->ebookRepository = $ebookRepository;
 	}
 
@@ -55,7 +58,7 @@ class Tx_SzEbook_Controller_EbookController extends Tx_Extbase_MVC_Controller_Ac
 	 * @return void
 	 */
 	public function listAction() {
-		/** @var $ebook Tx_SzEbook_Domain_Model_Ebook */
+		/** @var $ebook Ebook */
 		$ebook = $this->ebookRepository->findByUid($this->settings['pdf']);
 
 		if(is_object($ebook)) {
@@ -66,5 +69,4 @@ class Tx_SzEbook_Controller_EbookController extends Tx_Extbase_MVC_Controller_Ac
 			$this->view->assign('ebook', $ebook);
 		}
 	}
-
 }

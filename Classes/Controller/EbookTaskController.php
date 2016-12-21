@@ -1,4 +1,5 @@
 <?php
+namespace Sunzinet\SzEbook\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -23,6 +24,11 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use Sunzinet\SzEbook\Domain\Model\Ebook;
+use Sunzinet\SzEbook\Domain\Repository\EbookRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * Class Tx_SzEbook_Controller_EbookTaskController
@@ -30,12 +36,12 @@
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controller_ActionController {
+class EbookTaskController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * ebookRepository
 	 *
-	 * @var Tx_SzEbook_Domain_Repository_EbookRepository
+	 * @var EbookRepository
 	 */
 	protected $ebookRepository;
 
@@ -63,10 +69,11 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 	/**
 	 * injectEbookRepository
 	 *
-	 * @param Tx_SzEbook_Domain_Repository_EbookRepository $ebookRepository
+	 * @param EbookRepository $ebookRepository
 	 * @return void
 	 */
-	public function injectEbookRepository(Tx_SzEbook_Domain_Repository_EbookRepository $ebookRepository) {
+	public function injectEbookRepository(EbookRepository $ebookRepository)
+	{
 		$this->ebookRepository = $ebookRepository;
 	}
 
@@ -74,20 +81,20 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 	 * Converts PDF to turnjs eBook
 	 *
 	 * @return bool
-	 * @throws RuntimeException
+	 * @throws \RuntimeException
 	 */
 	public function convertAction() {
-		$this->extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(Tx_Extbase_Configuration_ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+		$this->extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 		$this->settings = $this->extbaseFrameworkConfiguration['settings'];
 		$this->templatePath = $this->extbaseFrameworkConfiguration['view'];
 
 		if(!$this->templatePath) {
 			$message = 'No TypoScript template found!';
-			throw new RuntimeException($message);
+			throw new \RuntimeException($message);
 		}
 
 		$fluid = $this->setTemplate($this->templatePath['templateRootPath']);
-		/** @var $pdf Tx_SzEbook_Domain_Model_Ebook */
+		/** @var $pdf Ebook */
 		$pdf = $this->ebookRepository->findTask();
 
 		if($pdf) {
@@ -103,7 +110,7 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 				mkdir($path . '/pages', 0775, true);
 				shell_exec('cp -P -R ' . $fluid->getLayoutRootPath() . '/extras ' . $path . '/extras/');
 
-				$img = new Imagick($file);
+				$img = new \Imagick($file);
 
 				$imagegeometry = $img->getimagegeometry();
 				$output = $fluid->assignMultiple(array('header' => $pdf->getHeader(), 'pages' => $img->getnumberimages(), 'width' => ($imagegeometry['width']*2), 'height' => $imagegeometry['height']));
@@ -143,12 +150,12 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 	 * Setzt den Pfad zum Turnjs Template
 	 *
 	 * @param $path
-	 * @return Tx_Fluid_View_StandaloneView
+	 * @return StandaloneView
 	 */
 	protected function setTemplate($path) {
-		/** @var $fluid Tx_Fluid_View_StandaloneView */
-		$fluid = t3lib_div::makeInstance('Tx_Fluid_View_StandaloneView');
-		$templateRootPath = t3lib_div::getFileAbsFileName($path);
+		/** @var $fluid StandaloneView */
+		$fluid = GeneralUtility::makeInstance(StandaloneView::class);
+		$templateRootPath = GeneralUtility::getFileAbsFileName($path);
 		$fluid->setTemplatePathAndFilename($templateRootPath.'turnjs/index.html');
 
 		return $fluid;
@@ -174,8 +181,8 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 			exec('convert -density 400 -colorspace RGB ' . $file.'['.$it.'] ' . $tempImage);
 
 			$currentImageSize = getimagesize($tempImage);
-			$resizedImage = new Imagick($tempImage);
-			$resizedImage->resizeImage($currentImageSize[0]/4,$currentImageSize[1]/4, Imagick::FILTER_LANCZOS,1);
+			$resizedImage = new \Imagick($tempImage);
+			$resizedImage->resizeImage($currentImageSize[0]/4,$currentImageSize[1]/4, \Imagick::FILTER_LANCZOS,1);
 			$resizedImage->writeImage($tempImage);
 
 			rename($tempImage, $path . '/pages/' . ($it+1) . '.jpg');
@@ -183,8 +190,8 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 			exec('convert -density 400 -colorspace RGB ' . $file.'['.$it.'] ' . $tempImageThumb);
 
 			$currentImageThumbSize = getimagesize($tempImageThumb);
-			$resizedImageThumb = new Imagick($tempImageThumb);
-			$resizedImageThumb->resizeImage($currentImageThumbSize[0]/4,$currentImageThumbSize[1]/4, Imagick::FILTER_LANCZOS,1);
+			$resizedImageThumb = new \Imagick($tempImageThumb);
+			$resizedImageThumb->resizeImage($currentImageThumbSize[0]/4,$currentImageThumbSize[1]/4, \Imagick::FILTER_LANCZOS,1);
 			$resizedImageThumb->writeImage($tempImageThumb);
 
 			rename($tempImageThumb, $path . '/pages/' . ($it+1) . '-thumb.jpg');
@@ -192,8 +199,8 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 			exec('convert -density 400 -colorspace RGB ' . $file.'['.$it.'] ' . $tempImageLarge);
 
 			$currentImageLargeSize = getimagesize($tempImageLarge);
-			$resizedImageLarge = new Imagick($tempImageLarge);
-			$resizedImageLarge->resizeImage($currentImageLargeSize[0]/2,$currentImageLargeSize[1]/2, Imagick::FILTER_LANCZOS,1);
+			$resizedImageLarge = new \Imagick($tempImageLarge);
+			$resizedImageLarge->resizeImage($currentImageLargeSize[0]/2,$currentImageLargeSize[1]/2, \Imagick::FILTER_LANCZOS,1);
 			$resizedImageLarge->writeImage($tempImageLarge);
 
 			rename($tempImageLarge, $path . '/pages/' . ($it+1) . '-large.jpg');
@@ -201,6 +208,4 @@ class Tx_SzEbook_Controller_EbookTaskController extends Tx_Extbase_MVC_Controlle
 			file_put_contents($path . '/pages/' . ($it+1) . '-regions.json', '[]');
 		}
 	}
-
 }
-?>

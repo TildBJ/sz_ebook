@@ -1,4 +1,9 @@
 <?php
+namespace Sunzinet\SzEbook\Command;
+
+use Sunzinet\SzEbook\Domain\Repository\EbookRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * Description of the phpfile 'Convert.php'
@@ -8,22 +13,22 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 
-class Tx_SzEbook_Command_ConvertCommandController extends Tx_Extbase_MVC_Controller_CommandController {
+class ConvertCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandController {
 
 /**
 	 * ebookRepository
 	 *
-	 * @var Tx_SzEbook_Domain_Repository_EbookRepository
+	 * @var EbookRepository
 	 */
 	protected $ebookRepository;
 
 	/**
 	 * injectEbookRepository
 	 *
-	 * @param Tx_SzEbook_Domain_Repository_EbookRepository $ebookRepository
+	 * @param EbookRepository $ebookRepository
 	 * @return void
 	 */
-	public function injectEbookRepository(Tx_SzEbook_Domain_Repository_EbookRepository $ebookRepository) {
+	public function injectEbookRepository(EbookRepository $ebookRepository) {
 		$this->ebookRepository = $ebookRepository;
 	}
 
@@ -33,7 +38,7 @@ class Tx_SzEbook_Command_ConvertCommandController extends Tx_Extbase_MVC_Control
 	 * @return bool
 	 */
 	public function convertCommand() {
-		Tx_Extbase_Utility_Debugger::var_dump('test');
+		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump('test');
 		die();
 		$fluid = $this->setTemplate('EXT:sz_ebook/Resources/Private/Templates/');
 		/** @var $pdf Tx_SzEbook_Domain_Model_Ebook */
@@ -53,7 +58,7 @@ class Tx_SzEbook_Command_ConvertCommandController extends Tx_Extbase_MVC_Control
 				chmod($path . '/index.html', 0775);
 				shell_exec('cp -P -R ' . $fluid->getLayoutRootPath() . '/extras ' . $path . '/extras/');
 
-				$img = new Imagick($file);
+				$img = new \Imagick($file);
 
 				$imagegeometry = $img->getimagegeometry();
 				$output = $fluid->assignMultiple(array('header' => $pdf->getHeader(), 'pages' => $img->getnumberimages(), 'width' => ($imagegeometry['width']*2), 'height' => $imagegeometry['height']));
@@ -92,12 +97,12 @@ class Tx_SzEbook_Command_ConvertCommandController extends Tx_Extbase_MVC_Control
 	 * Setzt den Pfad zum Turnjs Template
 	 *
 	 * @param $path
-	 * @return Tx_Fluid_View_StandaloneView
+	 * @return StandaloneView
 	 */
 	protected function setTemplate($path) {
-		/** @var $fluid Tx_Fluid_View_StandaloneView */
-		$fluid = t3lib_div::makeInstance('Tx_Fluid_View_StandaloneView');
-		$templateRootPath = t3lib_div::getFileAbsFileName($path);
+		/** @var $fluid StandaloneView */
+		$fluid = GeneralUtility::makeInstance(StandaloneView::class);
+		$templateRootPath = GeneralUtility::getFileAbsFileName($path);
 		$fluid->setTemplatePathAndFilename($templateRootPath.'turnjs/index.html');
 
 		return $fluid;
@@ -123,8 +128,8 @@ class Tx_SzEbook_Command_ConvertCommandController extends Tx_Extbase_MVC_Control
 			exec('convert -density 400 -colorspace RGB ' . $file.'['.$it.'] ' . $tempImage);
 
 			$currentImageSize = getimagesize($tempImage);
-			$resizedImage = new Imagick($tempImage);
-			$resizedImage->resizeImage($currentImageSize[0]/4,$currentImageSize[1]/4, Imagick::FILTER_LANCZOS,1);
+			$resizedImage = new \Imagick($tempImage);
+			$resizedImage->resizeImage($currentImageSize[0]/4,$currentImageSize[1]/4, \Imagick::FILTER_LANCZOS,1);
 			$resizedImage->writeImage($tempImage);
 
 			rename($tempImage, $path . '/pages/' . ($it+1) . '.jpg');
@@ -132,8 +137,8 @@ class Tx_SzEbook_Command_ConvertCommandController extends Tx_Extbase_MVC_Control
 			exec('convert -density 400 -colorspace RGB ' . $file.'['.$it.'] ' . $tempImageThumb);
 
 			$currentImageThumbSize = getimagesize($tempImageThumb);
-			$resizedImageThumb = new Imagick($tempImageThumb);
-			$resizedImageThumb->resizeImage($currentImageThumbSize[0]/4,$currentImageThumbSize[1]/4, Imagick::FILTER_LANCZOS,1);
+			$resizedImageThumb = new \Imagick($tempImageThumb);
+			$resizedImageThumb->resizeImage($currentImageThumbSize[0]/4,$currentImageThumbSize[1]/4, \Imagick::FILTER_LANCZOS,1);
 			$resizedImageThumb->writeImage($tempImageThumb);
 
 			rename($tempImageThumb, $path . '/pages/' . ($it+1) . '-thumb.jpg');
@@ -141,8 +146,8 @@ class Tx_SzEbook_Command_ConvertCommandController extends Tx_Extbase_MVC_Control
 			exec('convert -density 400 -colorspace RGB ' . $file.'['.$it.'] ' . $tempImageLarge);
 
 			$currentImageLargeSize = getimagesize($tempImageLarge);
-			$resizedImageLarge = new Imagick($tempImageLarge);
-			$resizedImageLarge->resizeImage($currentImageLargeSize[0]/2,$currentImageLargeSize[1]/2, Imagick::FILTER_LANCZOS,1);
+			$resizedImageLarge = new \Imagick($tempImageLarge);
+			$resizedImageLarge->resizeImage($currentImageLargeSize[0]/2,$currentImageLargeSize[1]/2, \Imagick::FILTER_LANCZOS,1);
 			$resizedImageLarge->writeImage($tempImageLarge);
 
 			rename($tempImageLarge, $path . '/pages/' . ($it+1) . '-large.jpg');
@@ -150,7 +155,4 @@ class Tx_SzEbook_Command_ConvertCommandController extends Tx_Extbase_MVC_Control
 			file_put_contents($path . '/pages/' . ($it+1) . '-regions.json', '[]');
 		}
 	}
-
 }
-
-?>
