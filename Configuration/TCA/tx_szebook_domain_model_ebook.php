@@ -2,7 +2,7 @@
 
 return array(
 	'ctrl' => array(
-		'title'	=> 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook',
+		'title' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook',
 		'label' => 'header',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -25,10 +25,10 @@ return array(
 		'iconfile' => 'EXT:sz_ebook/Resources/Public/Icons/tx_szebook_domain_model_ebook.gif'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, image, pdf, header, scale',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, image, pdf, header, scale, type',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, header, image, pdf, scale,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, header, image, pdf, scale, type,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -128,7 +128,7 @@ return array(
 			),
 		),
 		'pdf' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.pdf',
 			'config' => array(
 				'type' => 'group',
@@ -142,14 +142,14 @@ return array(
 			),
 		),
 		'header' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.header',
 			'config' => array(
 				'type' => 'input',
 			),
 		),
 		'scale' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.scale',
 			'config' => array(
 				'type' => 'input',
@@ -161,6 +161,17 @@ return array(
 					'upper' => 2
 				),
 			),
-		)
+		),
+		'type' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.type',
+			'config' => array(
+				'type' => 'select',
+				'readOnly' => TRUE,
+				'items' => array(
+					array('LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.type.0', 0)
+				),
+			),
+		),
 	),
 );

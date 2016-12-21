@@ -11,6 +11,8 @@
 			<label index="tx_szebook_domain_model_ebook.header">Header</label>
 			<label index="tx_szebook_domain_model_ebook.image">Preview Image</label>
 			<label index="tx_szebook_domain_model_ebook.scale">Scale</label>
+			<label index="tx_szebook_domain_model_ebook.type">Type</label>
+			<label index="tx_szebook_domain_model_ebook.type.0">Default</label>
 		</languageKey>
 
 		<languageKey index="default" type="array">
@@ -19,6 +21,8 @@
 			<label index="tx_szebook_domain_model_ebook.header">Header</label>
 			<label index="tx_szebook_domain_model_ebook.image">Vorschaubild</label>
 			<label index="tx_szebook_domain_model_ebook.scale">Skalieren</label>
+			<label index="tx_szebook_domain_model_ebook.type">Typ</label>
+			<label index="tx_szebook_domain_model_ebook.type.0">Standard</label>
 		</languageKey>
 	</data>
 </T3locallang>
