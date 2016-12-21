@@ -1,15 +1,34 @@
 <?php
-if (!defined ('TYPO3_MODE')) {
-	die ('Access denied.');
-}
 
-$TCA['tx_szebook_domain_model_ebook'] = array(
-	'ctrl' => $TCA['tx_szebook_domain_model_ebook']['ctrl'],
+return array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook',
+		'label' => 'header',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+
+		'versioningWS' => 2,
+		'versioning_followPages' => TRUE,
+		'origUid' => 't3_origuid',
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+			'starttime' => 'starttime',
+			'endtime' => 'endtime',
+		),
+		'searchFields' => 'pdf,',
+		'iconfile' => 'EXT:sz_ebook/Resources/Public/Icons/tx_szebook_domain_model_ebook.gif'
+	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, image, pdf, header, scale',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, header, image, pdf, scale,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, header, image, pdf, scale,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -145,5 +164,3 @@ $TCA['tx_szebook_domain_model_ebook'] = array(
 		)
 	),
 );
-
-?>
