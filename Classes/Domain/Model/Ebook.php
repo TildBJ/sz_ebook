@@ -35,14 +35,14 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	/**
 	 * pdf
 	 *
-	 * @var string
+	 * @var \TYPO3\CMS\Core\Resource\FileReference
 	 */
 	protected $pdf;
 
 	/**
 	 * image
 	 *
-	 * @var string
+	 * @var \TYPO3\CMS\Core\Resource\FileReference
 	 */
 	protected $image;
 
@@ -70,7 +70,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	/**
 	 * Returns the image
 	 *
-	 * @return string $image
+	 * @return \TYPO3\CMS\Core\Resource\FileReference $image
 	 */
 	public function getImage() {
 		return $this->image;
@@ -79,7 +79,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	/**
 	 * Sets the image
 	 *
-	 * @param string $image
+	 * @param \TYPO3\CMS\Core\Resource\FileReference $image
 	 * @return Tx_SzEbook_Domain_Model_Ebook
 	 */
 	public function setImage($image) {
@@ -91,7 +91,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	/**
 	 * Returns the pdf
 	 *
-	 * @return string $pdf
+	 * @return \TYPO3\CMS\Core\Resource\FileReference $pdf
 	 */
 	public function getPdf() {
 		return $this->pdf;
@@ -100,7 +100,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	/**
 	 * Sets the pdf
 	 *
-	 * @param string $pdf
+	 * @param \TYPO3\CMS\Core\Resource\FileReference $pdf
 	 * @return Tx_SzEbook_Domain_Model_Ebook
 	 */
 	public function setPdf($pdf) {

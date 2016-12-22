@@ -17,4 +17,5 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	)
 );
 
-?>
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['szEbookFileToFalMigration'] =
+    'Tx_SzEbook_Migration_FileToFalMigration';

@@ -111,36 +111,43 @@ return array(
 					'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
 				),
 			),
-		),
-		'image' => array(
-			'exclude' => 1,
-			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.image',
-			'config' => array(
-				'type' => 'group',
-				'internal_type' => 'file',
-				'uploadfolder' => 'uploads/tx_szebook',
-				'allowed' => 'jpg,jpeg,png',
-				'disallowed' => 'php',
-				'size' => 1,
-				'minitems' => 0,
-				'maxitems' => 1,
-				'show_thumbs' => 0,
-			),
-		),
-		'pdf' => array(
-			'exclude' => 1,
-			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.pdf',
-			'config' => array(
-				'type' => 'group',
-				'internal_type' => 'file',
-				'uploadfolder' => 'uploads/tx_szebook',
-				'allowed' => 'PDF',
-				'disallowed' => 'php',
-				'size' => 1,
-				'minitems' => 1,
-				'maxitems' => 1,
-			),
-		),
+        ),
+        'image' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.image',
+            //'config' => array(
+            //'type' => 'group',
+            //'internal_type' => 'file',
+            //'uploadfolder' => 'uploads/tx_szebook',
+            //'allowed' => 'jpg,jpeg,png',
+            //'disallowed' => 'php',
+            //'size' => 1,
+            //'minitems' => 0,
+            //'maxitems' => 1,
+            //'show_thumbs' => 0,
+            //),
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('image', array(
+                'appearance' => array(
+                    'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+                ),
+                'minitems' => 0,
+                'maxitems' => 1,
+            ), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']),
+        ),
+        'pdf' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.pdf',
+            'config' => array(
+                'type' => 'group',
+                'internal_type' => 'file',
+                'uploadfolder' => 'uploads/tx_szebook',
+                'allowed' => 'PDF',
+                'disallowed' => 'php',
+                'size' => 1,
+                'minitems' => 1,
+                'maxitems' => 1,
+            ),
+        ),
 		'header' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.header',
