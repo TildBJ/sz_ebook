@@ -59,11 +59,13 @@ class Tx_SzEbook_Controller_EbookController extends Tx_Extbase_MVC_Controller_Ac
 		$ebook = $this->ebookRepository->findByUid($this->settings['pdf']);
 
 		if(is_object($ebook)) {
-			$file = PATH_site.$ebook->getPdf();
-			$fileinfo = pathinfo($file);
-
-			$this->view->assign('path', $fileinfo['filename']);
-			$this->view->assign('ebook', $ebook);
+			$image = $ebook->getImage()->current();
+			$pdf = $ebook->getPdf()->current();
+			$this->view->assignMultiple([
+				'ebook' => $ebook,
+				'image' => $image,
+				'pdf' => $pdf,
+			]);
 		}
 	}
 

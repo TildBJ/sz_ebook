@@ -57,7 +57,7 @@ class Tx_SzEbook_Migration_FileToFalMigration extends Tx_Install_Updates_Base {
 	 */
 	public function checkForUpdate(&$description) {
 		$ebooks = $this->getOldEbooks();
-		if (count($ebooks > 0)) {
+		if (count($ebooks) > 0) {
 			return TRUE;
 		}
 
@@ -75,11 +75,13 @@ class Tx_SzEbook_Migration_FileToFalMigration extends Tx_Install_Updates_Base {
 		$oldEbooks = $this->getOldEbooks();
 
 		foreach ($oldEbooks as $ebook) {
-			if (is_string($ebook['image'])) {
-				$this->migrateFileToFal($ebook['image'], $ebook['uid'], 'image');
+			if (!intval($ebook['image'])) {
+				$uid = $this->migrateFileToFal($ebook['image'], $ebook['uid'], 'image');
+				$this->database->exec_UPDATEquery($this->table, 'uid=' . $ebook['uid'], ['image' => $uid]);
 			}
-			if (is_string($ebook['pdf'])) {
-				$this->migrateFileToFal($ebook['pdf'], $ebook['uid'], 'pdf');
+			if (!intval($ebook['pdf'])) {
+				$uid = $this->migrateFileToFal($ebook['pdf'], $ebook['uid'], 'pdf');
+				$this->database->exec_UPDATEquery($this->table, 'uid=' . $ebook['uid'], ['pdf' => $uid]);
 			}
 		}
 
@@ -93,7 +95,7 @@ class Tx_SzEbook_Migration_FileToFalMigration extends Tx_Install_Updates_Base {
 		$ebooks = $this->database->exec_SELECTgetRows('uid, image, pdf', $this->table);
 		$oldEbooks = array();
 		foreach ($ebooks as $ebook) {
-			if (is_string($ebook['image']) || is_string($ebook['pdf'])) {
+			if (!intval($ebook['image']) || !intval($ebook['pdf'])) {
 				$oldEbooks[] = $ebook;
 			}
 		}
@@ -101,6 +103,12 @@ class Tx_SzEbook_Migration_FileToFalMigration extends Tx_Install_Updates_Base {
 		return $oldEbooks;
 	}
 
+	/**
+	 * @param $fileName
+	 * @param $uidLocal
+	 * @param $fieldName
+	 * @return bool|int
+	 */
 	protected function migrateFileToFal($fileName, $uidLocal, $fieldName) {
 		$storageRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
 		/** @var $storage \TYPO3\CMS\Core\Resource\ResourceStorage */
@@ -111,39 +119,19 @@ class Tx_SzEbook_Migration_FileToFalMigration extends Tx_Install_Updates_Base {
 		}
 		$file = $storage->addFile(PATH_site . 'uploads/tx_szebook/' . $fileName, $storage->createFolder($storage->getDefaultFolder()->getIdentifier() . 'SzEbook'), $fileName);
 
-		$data = array();
-		$data['sys_file_reference']['NEW1'] = array(
+		$GLOBALS["TYPO3_DB"]->store_lastBuiltQuery = TRUE;
+
+		$this->database->exec_INSERTquery('sys_file_reference', [
 			'uid_local' => $file->getProperty('uid'),
 			'uid_foreign' => $uidLocal,
 			'tablenames' => $this->table,
 			'fieldname' => $fieldName,
+			'tstamp' => time(),
+			'crdate' => time(),
 			'pid' => 1,
 			'table_local' => 'sys_file',
-		);
-		//$data[$this->table][$uidLocal] = array($fieldName => 'NEW1');
-
-		$beUser = new \TYPO3\CMS\Core\Authentication\BackendUserAuthentication();
-		$GLOBALS['BE_USER'] = $beUser;
-		$GLOBALS['BE_USER']->user['admin'] = true;
-
-		/** @var \TYPO3\CMS\Core\DataHandling\DataHandler $tce */
-		$tce = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\DataHandling\DataHandler::class);
-		$tce->start($data, array());
-		$tce->process_datamap();
-		$tce->clear_cacheCmd('pages');
-
-		/** @var \TYPO3\CMS\Core\Resource\FileRepository $fileRepository */
-		$fileRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\FileRepository');
-		$fileObjects = $fileRepository->findByRelation($this->table, $fieldName, $uidLocal);
-		/** @var \TYPO3\CMS\Core\Resource\FileReference $fileObject */
-		$fileObject = reset($fileObjects);
-
-		/** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference */
-		$fileReference = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Domain\Model\FileReference::class);
-		$fileReference->setOriginalResource($fileObject);
-
-		\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($fileReference, __FILE__ . ': ' . __LINE__);
-
-		return $fileReference;
+		]);
+		$lastUid = $this->database->sql_insert_id();
+		return $lastUid;
 	}
 }

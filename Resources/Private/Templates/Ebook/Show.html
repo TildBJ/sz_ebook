@@ -11,8 +11,8 @@
 		</div>
 		<div class="container">
 			<div class="magazine" id="viewer" data-scale="{ebook.scale}">
-				<f:if condition="{ebook.image}">
-					<div class="hard"><f:image src="uploads/tx_szebook/{ebook.image}" /></div>
+				<f:if condition="{image}">
+					<div class="hard"><f:image image="{image}" /></div>
 				</f:if>
 			</div>
 		</div>
@@ -20,7 +20,7 @@
 
 	<script>
 		PDFJS.workerSrc = '/typo3conf/ext/sz_ebook/Resources/Public/Js/pdf/worker_loader.js';
-		var pdfWithFormsPath = '/uploads/tx_szebook/{ebook.pdf}';
+		var pdfWithFormsPath = '/{pdf.originalResource.publicUrl}';
 	</script>
 	<script src="/typo3conf/ext/sz_ebook/Resources/Public/Js/pdf/forms.js"></script>
 

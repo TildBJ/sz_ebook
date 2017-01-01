@@ -35,14 +35,14 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	/**
 	 * pdf
 	 *
-	 * @var \TYPO3\CMS\Core\Resource\FileReference
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
 	 */
 	protected $pdf;
 
 	/**
 	 * image
 	 *
-	 * @var \TYPO3\CMS\Core\Resource\FileReference
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
 	 */
 	protected $image;
 
@@ -67,10 +67,16 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	 */
 	protected $scale;
 
+	public function __construct()
+	{
+		$this->image = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->pdf = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+
 	/**
 	 * Returns the image
 	 *
-	 * @return \TYPO3\CMS\Core\Resource\FileReference $image
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $image
 	 */
 	public function getImage() {
 		return $this->image;
@@ -79,7 +85,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	/**
 	 * Sets the image
 	 *
-	 * @param \TYPO3\CMS\Core\Resource\FileReference $image
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $image
 	 * @return Tx_SzEbook_Domain_Model_Ebook
 	 */
 	public function setImage($image) {
@@ -91,7 +97,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	/**
 	 * Returns the pdf
 	 *
-	 * @return \TYPO3\CMS\Core\Resource\FileReference $pdf
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $pdf
 	 */
 	public function getPdf() {
 		return $this->pdf;
@@ -100,7 +106,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	/**
 	 * Sets the pdf
 	 *
-	 * @param \TYPO3\CMS\Core\Resource\FileReference $pdf
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<TYPO3\CMS\Core\Resource\FileReference> $pdf
 	 * @return Tx_SzEbook_Domain_Model_Ebook
 	 */
 	public function setPdf($pdf) {
