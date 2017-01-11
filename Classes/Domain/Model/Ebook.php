@@ -26,7 +26,7 @@ namespace Sunzinet\SzEbook\Domain\Model;
  ***************************************************************/
 
 /**
- * Class Tx_SzEbook_Domain_Model_Ebook
+ * Class Ebook
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later

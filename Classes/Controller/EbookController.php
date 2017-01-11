@@ -28,7 +28,7 @@ namespace Sunzinet\SzEbook\Controller;
 use Sunzinet\SzEbook\Domain\Model\Ebook;
 use Sunzinet\SzEbook\Domain\Repository\EbookRepository;
 /**
- * Class Tx_SzEbook_Controller_EbookController
+ * Class EbookController
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later

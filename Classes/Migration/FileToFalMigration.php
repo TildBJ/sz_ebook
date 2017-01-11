@@ -28,7 +28,7 @@ namespace Sunzinet\SzEbook\Migration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Class Tx_SzEbook_Migration_FileToFalMigration
+ * Class FileToFalMigration
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
