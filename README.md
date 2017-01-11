@@ -1,7 +1,7 @@
 sz_ebook
 ========
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/TildBJ/sz_ebook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Slack](https://assets.brandfolder.com/fr7gg3uy/view.png)](https://typo3.slack.com/messages/sz_ebook/)
 
 TYPO3 Extension sz_ebook
 
