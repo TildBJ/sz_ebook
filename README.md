@@ -3,7 +3,7 @@ sz_ebook
 
 [![Slack](https://assets.brandfolder.com/fr7gg3uy/view.png)](https://typo3.slack.com/messages/sz_ebook/)
 
-TYPO3 Extension sz_ebook
+TYPO3 Extension sz_ebook [![Build Status](https://travis-ci.org/TildBJ/sz_ebook)](https://travis-ci.org/TildBJ/sz_ebook.svg)
 
 <table>
 	<tr>
