@@ -1,4 +1,5 @@
 <?php
+namespace Sunzinet\SzEbook\Controller;
 
 /***************************************************************
  *  Copyright notice
