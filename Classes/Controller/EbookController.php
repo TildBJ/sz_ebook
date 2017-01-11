@@ -26,7 +26,6 @@ namespace Sunzinet\SzEbook\Controller;
  ***************************************************************/
 
 use Sunzinet\SzEbook\Domain\Model\Ebook;
-use Sunzinet\SzEbook\Domain\Repository\EbookRepository;
 /**
  * Class EbookController
  *
@@ -38,19 +37,10 @@ class EbookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	/**
 	 * ebookRepository
 	 *
-	 * @var EbookRepository
+	 * @var \Sunzinet\SzEbook\Domain\Repository\EbookRepository
+	 * @inject
 	 */
 	protected $ebookRepository;
-
-	/**
-	 * injectEbookRepository
-	 *
-	 * @param EbookRepository $ebookRepository
-	 * @return void
-	 */
-	public function injectEbookRepository(EbookRepository $ebookRepository) {
-		$this->ebookRepository = $ebookRepository;
-	}
 
 	/**
 	 * action show
