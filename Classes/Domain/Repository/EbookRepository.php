@@ -26,7 +26,7 @@ namespace Sunzinet\SzEbook\Domain\Repository;
  ***************************************************************/
 
 /**
- * Class Tx_SzEbook_Domain_Repository_EbookRepository
+ * Class EbookRepository
  *
  * @package sz_pdfbook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
