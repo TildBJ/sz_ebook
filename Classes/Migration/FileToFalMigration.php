@@ -1,4 +1,5 @@
 <?php
+namespace Sunzinet\SzEbook\Migration;
 
 /***************************************************************
  *  Copyright notice
@@ -24,13 +25,15 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
- * Class Tx_SzEbook_Migration_FileToFalMigration
+ * Class FileToFalMigration
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_SzEbook_Migration_FileToFalMigration extends Tx_Install_Updates_Base {
+class FileToFalMigration extends \TYPO3\CMS\Install\Updates\AbstractUpdate {
 
 	/**
 	 * @var string
@@ -110,7 +113,7 @@ class Tx_SzEbook_Migration_FileToFalMigration extends Tx_Install_Updates_Base {
 	 * @return bool|int
 	 */
 	protected function migrateFileToFal($fileName, $uidLocal, $fieldName) {
-		$storageRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
+		$storageRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
 		/** @var $storage \TYPO3\CMS\Core\Resource\ResourceStorage */
 		$storage = reset($storageRepository->findAll());
 

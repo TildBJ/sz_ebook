@@ -1,4 +1,5 @@
 <?php
+namespace Sunzinet\SzEbook\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -25,12 +26,12 @@
  ***************************************************************/
 
 /**
- * Class Tx_SzEbook_Domain_Model_Ebook
+ * Class Ebook
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEntity {
+class Ebook extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
 	 * pdf
@@ -86,7 +87,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	 * Sets the image
 	 *
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $image
-	 * @return Tx_SzEbook_Domain_Model_Ebook
+	 * @return Ebook
 	 */
 	public function setImage($image) {
 		$this->image = $image;
@@ -107,7 +108,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	 * Sets the pdf
 	 *
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<TYPO3\CMS\Core\Resource\FileReference> $pdf
-	 * @return Tx_SzEbook_Domain_Model_Ebook
+	 * @return Ebook
 	 */
 	public function setPdf($pdf) {
 		$this->pdf = $pdf;
@@ -128,7 +129,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	 * Sets the header
 	 *
 	 * @param string $header
-	 * @return Tx_SzEbook_Domain_Model_Ebook
+	 * @return Ebook
 	 */
 	public function setHeader($header) {
 		$this->header = $header;
@@ -140,7 +141,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	 * Sets or returns Turnjs
 	 *
 	 * @param bool $isTurnjs
-	 * @return Tx_SzEbook_Domain_Model_Ebook|bool
+	 * @return Ebook|bool
 	 */
 	public function isTurnjs($isTurnjs = false) {
 		if(!$isTurnjs) {
@@ -165,7 +166,7 @@ class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEnti
 	 * Sets the scale
 	 *
 	 * @param double2 $scale
-	 * @return Tx_SzEbook_Domain_Model_Ebook
+	 * @return Ebook
 	 */
 	public function setScale($scale) {
 		$this->scale = $scale;

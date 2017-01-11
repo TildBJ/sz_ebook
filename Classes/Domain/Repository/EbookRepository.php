@@ -1,4 +1,5 @@
 <?php
+namespace Sunzinet\SzEbook\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -25,12 +26,12 @@
  ***************************************************************/
 
 /**
- * Class Tx_SzEbook_Domain_Repository_EbookRepository
+ * Class EbookRepository
  *
  * @package sz_pdfbook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_SzEbook_Domain_Repository_EbookRepository extends Tx_Extbase_Persistence_Repository {
+class EbookRepository extends \TYPO3\CMS\Extbase\Persistence\Repositoryy {
 
 	/**
 	 * Findet die erste PDF, die noch nicht convertiert wurde
@@ -49,5 +50,4 @@ class Tx_SzEbook_Domain_Repository_EbookRepository extends Tx_Extbase_Persistenc
 
 		return $query->execute()->getFirst();
 	}
-
 }
