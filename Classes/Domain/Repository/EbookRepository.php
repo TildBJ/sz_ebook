@@ -31,7 +31,7 @@ namespace Sunzinet\SzEbook\Domain\Repository;
  * @package sz_pdfbook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class EbookRepository extends \TYPO3\CMS\Extbase\Persistence\Repositoryy {
+class EbookRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 	/**
 	 * Findet die erste PDF, die noch nicht convertiert wurde
