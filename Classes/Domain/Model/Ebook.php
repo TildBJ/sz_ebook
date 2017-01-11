@@ -36,14 +36,14 @@ class Ebook extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * pdf
 	 *
-	 * @var string
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
 	 */
 	protected $pdf;
 
 	/**
 	 * image
 	 *
-	 * @var string
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
 	 */
 	protected $image;
 
@@ -68,10 +68,16 @@ class Ebook extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	protected $scale;
 
+	public function __construct()
+	{
+		$this->image = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->pdf = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+
 	/**
 	 * Returns the image
 	 *
-	 * @return string $image
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $image
 	 */
 	public function getImage() {
 		return $this->image;
@@ -80,7 +86,7 @@ class Ebook extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the image
 	 *
-	 * @param string $image
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $image
 	 * @return Ebook
 	 */
 	public function setImage($image) {
@@ -92,7 +98,7 @@ class Ebook extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the pdf
 	 *
-	 * @return string $pdf
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $pdf
 	 */
 	public function getPdf() {
 		return $this->pdf;
@@ -101,7 +107,7 @@ class Ebook extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the pdf
 	 *
-	 * @param string $pdf
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<TYPO3\CMS\Core\Resource\FileReference> $pdf
 	 * @return Ebook
 	 */
 	public function setPdf($pdf) {

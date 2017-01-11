@@ -7,6 +7,15 @@ TYPO3 Extension sz_ebook
 
 <table>
 	<tr>
+		<td>2.0.0</td>
+		<td>
+			<ul>
+				<li>Change Filehandling to FAL</li>
+			</ul>
+			`Use Upgrade Wizard to migrate Files to FAL`
+		</td>
+	</tr>
+	<tr>
 		<td>1.1.0</td>
 		<td>
 			<ul>

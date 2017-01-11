@@ -25,10 +25,10 @@ return array(
 		'iconfile' => 'EXT:sz_ebook/Resources/Public/Icons/tx_szebook_domain_model_ebook.gif'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, image, pdf, header, scale',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, image, pdf, header, scale, type',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, header, image, pdf, scale,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, header, image, pdf, scale, type,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -117,41 +117,34 @@ return array(
 		'image' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.image',
-			'config' => array(
-				'type' => 'group',
-				'internal_type' => 'file',
-				'uploadfolder' => 'uploads/tx_szebook',
-				'allowed' => 'jpg,jpeg,png',
-				'disallowed' => 'php',
-				'size' => 1,
-				'minitems' => 0,
-				'maxitems' => 1,
-				'show_thumbs' => 0,
-			),
-		),
-		'pdf' => array(
-			'exclude' => 0,
-			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.pdf',
-			'config' => array(
-				'type' => 'group',
-				'internal_type' => 'file',
-				'uploadfolder' => 'uploads/tx_szebook',
-				'allowed' => 'PDF',
-				'disallowed' => 'php',
-				'size' => 1,
+			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('image', array(
+				'appearance' => array(
+					'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+				),
 				'minitems' => 1,
 				'maxitems' => 1,
-			),
+			), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']),
+		),
+		'pdf' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.pdf',
+			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('pdf', array(
+				'appearance' => array(
+					'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:media.addFileReference'
+				),
+				'minitems' => 1,
+				'maxitems' => 1,
+			), 'pdf'),
 		),
 		'header' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.header',
 			'config' => array(
 				'type' => 'input',
 			),
 		),
 		'scale' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.scale',
 			'config' => array(
 				'type' => 'input',
@@ -163,6 +156,17 @@ return array(
 					'upper' => 2
 				),
 			),
-		)
+		),
+		'type' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.type',
+			'config' => array(
+				'type' => 'select',
+				'readOnly' => TRUE,
+				'items' => array(
+					array('LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.type.0', 0)
+				),
+			),
+		),
 	),
 );
