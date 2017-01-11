@@ -7,7 +7,7 @@ if (!defined('TYPO3_MODE')) {
 	'Sunzinet.' . $_EXTKEY,
 	'Pi1',
 	array(
-		'Ebook' => 'list',
+		'Ebook' => 'show',
 
 	),
 	// non-cacheable actions
@@ -17,5 +17,4 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] =
-	\Sunzinet\SzEbook\Command\ConvertCommandController::class;
+?>

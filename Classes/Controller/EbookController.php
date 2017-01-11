@@ -1,5 +1,4 @@
 <?php
-namespace Sunzinet\SzEbook\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -53,11 +52,11 @@ class EbookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	}
 
 	/**
-	 * action list
+	 * action show
 	 *
 	 * @return void
 	 */
-	public function listAction() {
+	public function showAction() {
 		/** @var $ebook Ebook */
 		$ebook = $this->ebookRepository->findByUid($this->settings['pdf']);
 
