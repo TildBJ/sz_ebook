@@ -1,9 +1,11 @@
 sz_ebook
 ========
 
-[![Slack](https://assets.brandfolder.com/fr7gg3uy/view.png)](https://typo3.slack.com/messages/sz_ebook/)
+[![Build Status](https://travis-ci.org/TildBJ/sz_ebook.svg)](https://travis-ci.org/TildBJ/sz_ebook)
+[![Latest Unstable Version](https://poser.pugx.org/tildbj/sz-ebook/v/unstable)](//packagist.org/packages/tildbj/sz-ebook)
 
-TYPO3 Extension sz_ebook [![Build Status](https://travis-ci.org/TildBJ/sz_ebook.svg)](https://travis-ci.org/TildBJ/sz_ebook)
+TYPO3 Extension sz_ebook 
+Shows eBooks in your browser, using turn.js and pdf.js, based on Extbase and Fluid. Works with Tablets and Smartphones.
 
 <table>
 	<tr>
@@ -89,3 +91,6 @@ TYPO3 Extension sz_ebook [![Build Status](https://travis-ci.org/TildBJ/sz_ebook.
 		</td>
 	</tr>
 </table>
+
+Need Support?
+Feel free to ask your questions on [Slack](https://typo3.slack.com/messages/sz_ebook/)
