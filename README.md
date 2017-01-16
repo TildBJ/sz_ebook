@@ -3,6 +3,7 @@ sz_ebook
 
 [![Build Status](https://travis-ci.org/TildBJ/sz_ebook.svg)](https://travis-ci.org/TildBJ/sz_ebook)
 [![Latest Unstable Version](https://poser.pugx.org/tildbj/sz-ebook/v/unstable)](//packagist.org/packages/tildbj/sz-ebook)
+[![composer.lock available](https://poser.pugx.org/tildbj/sz-ebook/composerlock)](https://packagist.org/packages/tildbj/sz-ebook)
 
 TYPO3 Extension sz_ebook 
 Shows eBooks in your browser, using turn.js and pdf.js, based on Extbase and Fluid. Works with Tablets and Smartphones.
