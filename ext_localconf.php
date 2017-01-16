@@ -1,27 +1,21 @@
 <?php
 if (!defined('TYPO3_MODE')) {
-	die ('Access denied.');
+    die('Access denied.');
 }
 
-Tx_Extbase_Utility_Extension::configurePlugin(
-	$_EXTKEY,
-	'Pi1',
-	array(
-		'Ebook' => 'list',
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'TildBJ.' . $_EXTKEY,
+    'Pi1',
+    array(
+        'Ebook' => 'show',
 
-	),
-	// non-cacheable actions
-	array(
-		'Ebook' => '',
+    ),
+    // non-cacheable actions
+    array(
+        'Ebook' => '',
 
-	)
+    )
 );
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'Tx_SzEbook_Command_ConvertCommandController';
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['tx_szebook'] = array(
-	'extension'        => $_EXTKEY,
-	'title'            => 'Convert Task for sz_ebook',
-	'description'      => 'Konvertiert PDF\'s zu turnJs'
-);
-
-?>
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['szEbookFileToFalMigration'] =
+    'Tx_SzEbook_Migration_FileToFalMigration';

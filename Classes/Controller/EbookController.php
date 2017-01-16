@@ -1,9 +1,10 @@
 <?php
+namespace TildBJ\SzEbook\Controller;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Dennis Römmich <dennis.roemmich@sunzinet.com>, sunzinet AG
+ *  (c) 2014 Dennis Römmich <dennis@roemmich.eu>, sunzinet AG
  *
  *  All rights reserved
  *
@@ -23,48 +24,45 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TildBJ\SzEbook\Domain\Model\Ebook;
 
 /**
- * Class Tx_SzEbook_Controller_EbookController
+ * Class EbookController
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_SzEbook_Controller_EbookController extends Tx_Extbase_MVC_Controller_ActionController {
+class EbookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
 
-	/**
-	 * ebookRepository
-	 *
-	 * @var Tx_SzEbook_Domain_Repository_EbookRepository
-	 */
-	protected $ebookRepository;
+    /**
+     * ebookRepository
+     *
+     * @var    \TildBJ\SzEbook\Domain\Repository\EbookRepository
+     * @inject
+     */
+    protected $ebookRepository;
 
-	/**
-	 * injectEbookRepository
-	 *
-	 * @param Tx_SzEbook_Domain_Repository_EbookRepository $ebookRepository
-	 * @return void
-	 */
-	public function injectEbookRepository(Tx_SzEbook_Domain_Repository_EbookRepository $ebookRepository) {
-		$this->ebookRepository = $ebookRepository;
-	}
+    /**
+     * action show
+     *
+     * @return void
+     */
+    public function showAction()
+    {
+        /** @var $ebook Ebook */
+        $ebook = $this->ebookRepository->findByUid($this->settings['pdf']);
 
-	/**
-	 * action list
-	 *
-	 * @return void
-	 */
-	public function listAction() {
-		/** @var $ebook Tx_SzEbook_Domain_Model_Ebook */
-		$ebook = $this->ebookRepository->findByUid($this->settings['pdf']);
-
-		if(is_object($ebook)) {
-			$file = PATH_site.$ebook->getPdf();
-			$fileinfo = pathinfo($file);
-
-			$this->view->assign('path', $fileinfo['filename']);
-			$this->view->assign('ebook', $ebook);
-		}
-	}
-
+        if (is_object($ebook)) {
+            $image = $ebook->getImage()->current();
+            $pdf = $ebook->getPdf()->current();
+            $this->view->assignMultiple(
+                [
+                'ebook' => $ebook,
+                'image' => $image,
+                'pdf' => $pdf,
+                ]
+            );
+        }
+    }
 }

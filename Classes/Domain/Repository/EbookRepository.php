@@ -1,9 +1,10 @@
 <?php
+namespace TildBJ\SzEbook\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Dennis Römmich <dennis.roemmich@sunzinet.com>, sunzinet AG
+ *  (c) 2014 Dennis Römmich <dennis@roemmich.eu>, sunzinet AG
  *
  *  All rights reserved
  *
@@ -25,29 +26,30 @@
  ***************************************************************/
 
 /**
- * Class Tx_SzEbook_Domain_Repository_EbookRepository
+ * Class EbookRepository
  *
  * @package sz_pdfbook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_SzEbook_Domain_Repository_EbookRepository extends Tx_Extbase_Persistence_Repository {
+class EbookRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+{
 
-	/**
-	 * Findet die erste PDF, die noch nicht convertiert wurde
-	 *
-	 * @return object
-	 */
-	public function findTask() {
-		$query = $this->createQuery();
+    /**
+     * Findet die erste PDF, die noch nicht convertiert wurde
+     *
+     * @return object
+     */
+    public function findTask()
+    {
+        $query = $this->createQuery();
 
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
-		$query->getQuerySettings()->setRespectSysLanguage(FALSE);
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->getQuerySettings()->setRespectSysLanguage(false);
 
-		$query->matching(
-			$query->equals('turnjs', 0)
-		);
+        $query->matching(
+            $query->equals('turnjs', 0)
+        );
 
-		return $query->execute()->getFirst();
-	}
-
+        return $query->execute()->getFirst();
+    }
 }

@@ -1,0 +1,19 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+	<f:flashMessages />
+
+	<div class="magazine-viewport">
+		<h2 class="heading teaser"><span>{ebook.header}</span></h2>
+		<div class="progress">
+			<div class="progress-bar"></div>
+		</div>
+		<div class="magazine" id="viewer" data-scale="{ebook.scale}" data-pdf="/{pdf.originalResource.publicUrl}">
+			<f:if condition="{image}">
+				<div class="hard"><f:image image="{image}" /></div>
+			</f:if>
+		</div>
+	</div>
+
+</f:section>

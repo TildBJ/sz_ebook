@@ -1,0 +1,45 @@
+{
+  "name": "tildbj/sz-ebook",
+  "description": "Shows eBooks in your browser, using turn.js and pdf.js, based on Extbase and Fluid. Works with Tablets and Smartphones.",
+  "version": "2.0.0",
+  "type": "typo3-cms-extension",
+  "keywords": ["ebook", "sz_ebook", "flipbook", "HTML5", "responsive"],
+  "homepage": "http://sz-ebook.roemmich.eu",
+  "time": "2017-01-11",
+  "license": "GNU",
+  "authors": [
+    {
+      "name": "Dennis Römmich",
+      "email": "dennis@roemmich.eu",
+      "homepage": "http://www.roemmich.eu",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "dennis@roemmich.eu",
+    "issues": "https://github.com/TildBJ/sz_ebook/issues",
+    "source": "https://github.com/TildBJ/sz_ebook"
+  },
+  "require": {
+    "typo3/cms": ">=6.2.0,<7.99.99"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^2.7",
+    "phpunit/phpunit": "^5.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "TildBJ\\SzEbook\\": "Classes"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests",
+      "TYPO3\\CMS\\Core\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Classes/"
+    }
+  },
+  "config": {
+      "vendor-dir": ".Build/vendor",
+      "bin-dir": ".Build/bin"
+  }
+}

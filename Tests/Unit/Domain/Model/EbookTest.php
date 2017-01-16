@@ -1,16 +1,17 @@
 <?php
+namespace TildBJ\SzEbook\Tests\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Dennis Römmich <dennis.roemmich@sunzinet.com>, sunzinet AG
+ *  (c) 2014 Dennis Römmich <dennis@roemmich.eu>, sunzinet AG
  *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
  *  free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation; either version 3 of the License, or
  *  (at your option) any later version.
  *
  *  The GNU General Public License can be found at
@@ -23,49 +24,41 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TildBJ\SzEbook\Domain\Model\Ebook;
+use TYPO3\CMS\Core\Tests\UnitTestCase;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
- * Test case for class Tx_SzEbook_Domain_Model_Ebook.
+ * Class Ebook
  *
- * @version $Id$
- * @copyright Copyright belongs to the respective authors
+ * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- * @package TYPO3
- * @subpackage E Book
- *
- * @author Dennis Römmich <dennis.roemmich@sunzinet.com>
  */
-class Tx_SzEbook_Domain_Model_EbookTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
-	/**
-	 * @var Tx_SzEbook_Domain_Model_Ebook
-	 */
-	protected $fixture;
+class EbookTest extends UnitTestCase
+{
 
-	public function setUp() {
-		$this->fixture = new Tx_SzEbook_Domain_Model_Ebook();
-	}
+    public function getterSetterProvider()
+    {
+        return [
+            ['getPdf', new ObjectStorage(), 'setPdf', new ObjectStorage()]
+        ];
+    }
 
-	public function tearDown() {
-		unset($this->fixture);
-	}
+    /**
+     * Test getter and Setter
+     *
+     * @test
+     * @dataProvider getterSetterProvider
+     */
+    public function testGetterAndSetter($getter, $default, $setter, $value)
+    {
+        $ebook = new Ebook();
 
-	/**
-	 * @test
-	 */
-	public function getEReturnsInitialValueForString() { }
+        $this->assertSame($default, $ebook->$getter());
 
-	/**
-	 * @test
-	 */
-	public function setPdfForStringSetsPdf() {
-		$this->fixture->setPdf('Conceived at T3CON10');
-
-		$this->assertSame(
-			'Conceived at T3CON10',
-			$this->fixture->getPdf()
-		);
-	}
-
+        if (!is_null($setter)) {
+            $this->assertSame($ebook, $ebook->$setter($value));
+            $this->assertSame($value, $ebook->$getter());
+        }
+    }
 }
-?>

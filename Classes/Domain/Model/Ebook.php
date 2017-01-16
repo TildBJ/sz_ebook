@@ -1,9 +1,10 @@
 <?php
+namespace TildBJ\SzEbook\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Dennis Römmich <dennis.roemmich@sunzinet.com>, sunzinet AG
+ *  (c) 2014 Dennis Römmich <dennis@roemmich.eu>, sunzinet AG
  *
  *  All rights reserved
  *
@@ -25,146 +26,161 @@
  ***************************************************************/
 
 /**
- * Class Tx_SzEbook_Domain_Model_Ebook
+ * Class Ebook
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_SzEbook_Domain_Model_Ebook extends Tx_Extbase_DomainObject_AbstractEntity {
+class Ebook extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
 
-	/**
-	 * pdf
-	 *
-	 * @var string
-	 */
-	protected $pdf;
+    /**
+     * pdf
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    protected $pdf;
 
-	/**
-	 * image
-	 *
-	 * @var string
-	 */
-	protected $image;
+    /**
+     * image
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    protected $image;
 
-	/**
-	 * header
-	 *
-	 * @var string
-	 */
-	protected $header;
+    /**
+     * header
+     *
+     * @var string
+     */
+    protected $header;
 
-	/**
-	 * turnjs
-	 *
-	 * @var bool
-	 */
-	protected $turnjs;
+    /**
+     * turnjs
+     *
+     * @var bool
+     */
+    protected $turnjs;
 
-	/**
-	 * scale
-	 *
-	 * @var double2
-	 */
-	protected $scale;
+    /**
+     * scale
+     *
+     * @var double2
+     */
+    protected $scale;
 
-	/**
-	 * Returns the image
-	 *
-	 * @return string $image
-	 */
-	public function getImage() {
-		return $this->image;
-	}
+    public function __construct()
+    {
+        $this->image = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->pdf = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
-	/**
-	 * Sets the image
-	 *
-	 * @param string $image
-	 * @return Tx_SzEbook_Domain_Model_Ebook
-	 */
-	public function setImage($image) {
-		$this->image = $image;
+    /**
+     * Returns the image
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 
-		return $this;
-	}
+    /**
+     * Sets the image
+     *
+     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $image
+     * @return Ebook
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
 
-	/**
-	 * Returns the pdf
-	 *
-	 * @return string $pdf
-	 */
-	public function getPdf() {
-		return $this->pdf;
-	}
+        return $this;
+    }
 
-	/**
-	 * Sets the pdf
-	 *
-	 * @param string $pdf
-	 * @return Tx_SzEbook_Domain_Model_Ebook
-	 */
-	public function setPdf($pdf) {
-		$this->pdf = $pdf;
+    /**
+     * Returns the pdf
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $pdf
+     */
+    public function getPdf()
+    {
+        return $this->pdf;
+    }
 
-		return $this;
-	}
+    /**
+     * Sets the pdf
+     *
+     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $pdf
+     * @return Ebook
+     */
+    public function setPdf($pdf)
+    {
+        $this->pdf = $pdf;
 
-	/**
-	 * Returns the header
-	 *
-	 * @return string $header
-	 */
-	public function getHeader() {
-		return $this->header;
-	}
+        return $this;
+    }
 
-	/**
-	 * Sets the header
-	 *
-	 * @param string $header
-	 * @return Tx_SzEbook_Domain_Model_Ebook
-	 */
-	public function setHeader($header) {
-		$this->header = $header;
+    /**
+     * Returns the header
+     *
+     * @return string $header
+     */
+    public function getHeader()
+    {
+        return $this->header;
+    }
 
-		return $this;
-	}
+    /**
+     * Sets the header
+     *
+     * @param  string $header
+     * @return Ebook
+     */
+    public function setHeader($header)
+    {
+        $this->header = $header;
 
-	/**
-	 * Sets or returns Turnjs
-	 *
-	 * @param bool $isTurnjs
-	 * @return Tx_SzEbook_Domain_Model_Ebook|bool
-	 */
-	public function isTurnjs($isTurnjs = false) {
-		if(!$isTurnjs) {
-			return $this->turnjs;
-		}
+        return $this;
+    }
 
-		$this->turnjs = $isTurnjs;
+    /**
+     * Sets or returns Turnjs
+     *
+     * @param  bool $isTurnjs
+     * @return Ebook|bool
+     */
+    public function isTurnjs($isTurnjs = false)
+    {
+        if (!$isTurnjs) {
+            return $this->turnjs;
+        }
 
-		return $this;
-	}
+        $this->turnjs = $isTurnjs;
 
-	/**
-	 * Gets the scale
-	 *
-	 * @return double2
-	 */
-	public function getScale() {
-		return $this->scale;
-	}
+        return $this;
+    }
 
-	/**
-	 * Sets the scale
-	 *
-	 * @param double2 $scale
-	 * @return Tx_SzEbook_Domain_Model_Ebook
-	 */
-	public function setScale($scale) {
-		$this->scale = $scale;
+    /**
+     * Gets the scale
+     *
+     * @return double2
+     */
+    public function getScale()
+    {
+        return $this->scale;
+    }
 
-		return $this;
-	}
+    /**
+     * Sets the scale
+     *
+     * @param  double2 $scale
+     * @return Ebook
+     */
+    public function setScale($scale)
+    {
+        $this->scale = $scale;
 
+        return $this;
+    }
 }
