@@ -1,10 +1,10 @@
 <?php
-namespace Sunzinet\SzEbook\Domain\Model;
+namespace TildBJ\SzEbook\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Dennis Römmich <dennis.roemmich@sunzinet.com>, sunzinet AG
+ *  (c) 2014 Dennis Römmich <dennis@roemmich.eu>, sunzinet AG
  *
  *  All rights reserved
  *
@@ -107,7 +107,7 @@ class Ebook extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the pdf
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<TYPO3\CMS\Core\Resource\FileReference> $pdf
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $pdf
 	 * @return Ebook
 	 */
 	public function setPdf($pdf) {

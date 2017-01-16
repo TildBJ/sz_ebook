@@ -1,10 +1,10 @@
 <?php
-namespace Sunzinet\SzEbook\Migration;
+namespace TildBJ\SzEbook\Migration;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2016 Dennis Römmich <dennis.roemmich@sunzinet.com>, sunzinet AG
+ *  (c) 2016 Dennis Römmich <dennis@roemmich.eu>, sunzinet AG
  *
  *  All rights reserved
  *

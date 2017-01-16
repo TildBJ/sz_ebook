@@ -1,10 +1,10 @@
 <?php
-namespace Sunzinet\SzEbook\Domain\Repository;
+namespace TildBJ\SzEbook\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Dennis Römmich <dennis.roemmich@sunzinet.com>, sunzinet AG
+ *  (c) 2014 Dennis Römmich <dennis@roemmich.eu>, sunzinet AG
  *
  *  All rights reserved
  *

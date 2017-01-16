@@ -1,10 +1,10 @@
 <?php
-namespace Sunzinet\SzEbook\Controller;
+namespace TildBJ\SzEbook\Controller;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Dennis Römmich <dennis.roemmich@sunzinet.com>, sunzinet AG
+ *  (c) 2014 Dennis Römmich <dennis@roemmich.eu>, sunzinet AG
  *
  *  All rights reserved
  *
@@ -25,7 +25,7 @@ namespace Sunzinet\SzEbook\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Sunzinet\SzEbook\Domain\Model\Ebook;
+use TildBJ\SzEbook\Domain\Model\Ebook;
 /**
  * Class EbookController
  *
@@ -37,7 +37,7 @@ class EbookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	/**
 	 * ebookRepository
 	 *
-	 * @var \Sunzinet\SzEbook\Domain\Repository\EbookRepository
+	 * @var \TildBJ\SzEbook\Domain\Repository\EbookRepository
 	 * @inject
 	 */
 	protected $ebookRepository;

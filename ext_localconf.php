@@ -4,7 +4,7 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Sunzinet.' . $_EXTKEY,
+	'TildBJ.' . $_EXTKEY,
 	'Pi1',
 	array(
 		'Ebook' => 'show',
