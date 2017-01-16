@@ -34,7 +34,8 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class EbookTest extends UnitTestCase {
+class EbookTest extends UnitTestCase
+{
 
     public function getterSetterProvider()
     {
@@ -60,5 +61,4 @@ class EbookTest extends UnitTestCase {
             $this->assertSame($value, $ebook->$getter());
         }
     }
-
 }

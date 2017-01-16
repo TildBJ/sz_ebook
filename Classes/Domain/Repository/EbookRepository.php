@@ -31,23 +31,25 @@ namespace TildBJ\SzEbook\Domain\Repository;
  * @package sz_pdfbook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class EbookRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class EbookRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+{
 
-	/**
-	 * Findet die erste PDF, die noch nicht convertiert wurde
-	 *
-	 * @return object
-	 */
-	public function findTask() {
-		$query = $this->createQuery();
+    /**
+     * Findet die erste PDF, die noch nicht convertiert wurde
+     *
+     * @return object
+     */
+    public function findTask()
+    {
+        $query = $this->createQuery();
 
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
-		$query->getQuerySettings()->setRespectSysLanguage(FALSE);
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->getQuerySettings()->setRespectSysLanguage(false);
 
-		$query->matching(
-			$query->equals('turnjs', 0)
-		);
+        $query->matching(
+            $query->equals('turnjs', 0)
+        );
 
-		return $query->execute()->getFirst();
-	}
+        return $query->execute()->getFirst();
+    }
 }

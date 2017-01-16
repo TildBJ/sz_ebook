@@ -31,147 +31,156 @@ namespace TildBJ\SzEbook\Domain\Model;
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Ebook extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Ebook extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
 
-	/**
-	 * pdf
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-	 */
-	protected $pdf;
+    /**
+     * pdf
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    protected $pdf;
 
-	/**
-	 * image
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-	 */
-	protected $image;
+    /**
+     * image
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    protected $image;
 
-	/**
-	 * header
-	 *
-	 * @var string
-	 */
-	protected $header;
+    /**
+     * header
+     *
+     * @var string
+     */
+    protected $header;
 
-	/**
-	 * turnjs
-	 *
-	 * @var bool
-	 */
-	protected $turnjs;
+    /**
+     * turnjs
+     *
+     * @var bool
+     */
+    protected $turnjs;
 
-	/**
-	 * scale
-	 *
-	 * @var double2
-	 */
-	protected $scale;
+    /**
+     * scale
+     *
+     * @var double2
+     */
+    protected $scale;
 
-	public function __construct()
-	{
-		$this->image = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->pdf = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-	}
+    public function __construct()
+    {
+        $this->image = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->pdf = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
-	/**
-	 * Returns the image
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $image
-	 */
-	public function getImage() {
-		return $this->image;
-	}
+    /**
+     * Returns the image
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 
-	/**
-	 * Sets the image
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $image
-	 * @return Ebook
-	 */
-	public function setImage($image) {
-		$this->image = $image;
+    /**
+     * Sets the image
+     *
+     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $image
+     * @return Ebook
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Returns the pdf
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $pdf
-	 */
-	public function getPdf() {
-		return $this->pdf;
-	}
+    /**
+     * Returns the pdf
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $pdf
+     */
+    public function getPdf()
+    {
+        return $this->pdf;
+    }
 
-	/**
-	 * Sets the pdf
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $pdf
-	 * @return Ebook
-	 */
-	public function setPdf($pdf) {
-		$this->pdf = $pdf;
+    /**
+     * Sets the pdf
+     *
+     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Core\Resource\FileReference> $pdf
+     * @return Ebook
+     */
+    public function setPdf($pdf)
+    {
+        $this->pdf = $pdf;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Returns the header
-	 *
-	 * @return string $header
-	 */
-	public function getHeader() {
-		return $this->header;
-	}
+    /**
+     * Returns the header
+     *
+     * @return string $header
+     */
+    public function getHeader()
+    {
+        return $this->header;
+    }
 
-	/**
-	 * Sets the header
-	 *
-	 * @param string $header
-	 * @return Ebook
-	 */
-	public function setHeader($header) {
-		$this->header = $header;
+    /**
+     * Sets the header
+     *
+     * @param  string $header
+     * @return Ebook
+     */
+    public function setHeader($header)
+    {
+        $this->header = $header;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Sets or returns Turnjs
-	 *
-	 * @param bool $isTurnjs
-	 * @return Ebook|bool
-	 */
-	public function isTurnjs($isTurnjs = false) {
-		if(!$isTurnjs) {
-			return $this->turnjs;
-		}
+    /**
+     * Sets or returns Turnjs
+     *
+     * @param  bool $isTurnjs
+     * @return Ebook|bool
+     */
+    public function isTurnjs($isTurnjs = false)
+    {
+        if (!$isTurnjs) {
+            return $this->turnjs;
+        }
 
-		$this->turnjs = $isTurnjs;
+        $this->turnjs = $isTurnjs;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Gets the scale
-	 *
-	 * @return double2
-	 */
-	public function getScale() {
-		return $this->scale;
-	}
+    /**
+     * Gets the scale
+     *
+     * @return double2
+     */
+    public function getScale()
+    {
+        return $this->scale;
+    }
 
-	/**
-	 * Sets the scale
-	 *
-	 * @param double2 $scale
-	 * @return Ebook
-	 */
-	public function setScale($scale) {
-		$this->scale = $scale;
+    /**
+     * Sets the scale
+     *
+     * @param  double2 $scale
+     * @return Ebook
+     */
+    public function setScale($scale)
+    {
+        $this->scale = $scale;
 
-		return $this;
-	}
-
+        return $this;
+    }
 }

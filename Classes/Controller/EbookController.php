@@ -24,41 +24,45 @@ namespace TildBJ\SzEbook\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
 use TildBJ\SzEbook\Domain\Model\Ebook;
+
 /**
  * Class EbookController
  *
  * @package sz_ebook
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class EbookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class EbookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
 
-	/**
-	 * ebookRepository
-	 *
-	 * @var \TildBJ\SzEbook\Domain\Repository\EbookRepository
-	 * @inject
-	 */
-	protected $ebookRepository;
+    /**
+     * ebookRepository
+     *
+     * @var    \TildBJ\SzEbook\Domain\Repository\EbookRepository
+     * @inject
+     */
+    protected $ebookRepository;
 
-	/**
-	 * action show
-	 *
-	 * @return void
-	 */
-	public function showAction() {
-		/** @var $ebook Ebook */
-		$ebook = $this->ebookRepository->findByUid($this->settings['pdf']);
+    /**
+     * action show
+     *
+     * @return void
+     */
+    public function showAction()
+    {
+        /** @var $ebook Ebook */
+        $ebook = $this->ebookRepository->findByUid($this->settings['pdf']);
 
-		if(is_object($ebook)) {
-			$image = $ebook->getImage()->current();
-			$pdf = $ebook->getPdf()->current();
-			$this->view->assignMultiple([
-				'ebook' => $ebook,
-				'image' => $image,
-				'pdf' => $pdf,
-			]);
-		}
-	}
+        if (is_object($ebook)) {
+            $image = $ebook->getImage()->current();
+            $pdf = $ebook->getPdf()->current();
+            $this->view->assignMultiple(
+                [
+                'ebook' => $ebook,
+                'image' => $image,
+                'pdf' => $pdf,
+                ]
+            );
+        }
+    }
 }
