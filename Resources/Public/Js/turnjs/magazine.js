@@ -204,13 +204,6 @@ function resizeViewport() {
 
 	$('.magazine').removeClass('animated');
 
-	$('.magazine-viewport').css({
-		width: width,
-		height: height
-	}).
-	zoom('resize');
-
-
 	if ($('.magazine').turn('zoom')==1) {
 		var bound = calculateBound({
 			width: options.width,
