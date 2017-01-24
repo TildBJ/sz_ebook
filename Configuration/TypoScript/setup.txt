@@ -34,7 +34,6 @@ page.includeJSFooterlibs {
 	#turn.js
 	sz_ebook-hash = EXT:sz_ebook/Resources/Public/Js/turnjs/hash.js
 	sz_ebook-magazine = EXT:sz_ebook/Resources/Public/Js/turnjs/magazine.js
-	sz_ebook-zoom = EXT:sz_ebook/Resources/Public/Js/turnjs/zoom.min.js
 	sz_ebook-scissor = EXT:sz_ebook/Resources/Public/Js/turnjs/scissor.min.js
 	sz_ebook-turnjs = EXT:sz_ebook/Resources/Public/Js/turnjs/turn.min.js
 

@@ -1,6 +1,7 @@
 #viewer {
 	display: none;
 	z-index: 99;
+	position: static !important;
 }
 
 .progress {
@@ -19,6 +20,11 @@
 	width: 0;
 	height: 20px;
 	transition: 0.1s;
+}
+
+.pdfpage canvas {
+	width: 100% !important;
+	height: auto;
 }
 
 .magazine-viewport {
