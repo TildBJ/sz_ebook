@@ -43,6 +43,6 @@ $EM_CONF[$_EXTKEY] = array(
         ),
     ),
     'autoload' => array(
-        'psr-4' => array('Sunzinet\\SzEbook\\' => 'Classes')
+        'psr-4' => array('TildBJ\\SzEbook\\' => 'Classes')
     ),
 );
