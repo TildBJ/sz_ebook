@@ -1,6 +1,6 @@
 var pdfWithFormsPath = jQuery('#viewer').data('pdf');
 
-PDFJS.workerSrc = '/typo3conf/ext/sz_ebook/Resources/Public/Js/pdf/worker_loader.js';
+PDFJS.workerSrc = '/typo3conf/ext/sz_ebook/Resources/Public/JavaScript/pdf/worker_loader.js';
 /* -*- Mode: Java; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /* vim: set shiftwidth=2 tabstop=2 autoindent cindent expandtab: */
 
