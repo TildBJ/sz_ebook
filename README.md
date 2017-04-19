@@ -10,6 +10,28 @@ Shows eBooks in your browser, using turn.js and pdf.js, based on Extbase and Flu
 
 <table>
 	<tr>
+		<td><strong>Version</strong></td>
+		<td><strong>Changes:</strong></td>
+	</tr>
+	<tr>
+		<td>2.0.2</td>
+		<td>
+			<ul>
+				<li>Namespace Bugfix</li>
+				<li>Default values for pdf an image</li>
+				<li>Use TYPO3 naming convention (#16)</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>2.0.1</td>
+		<td>
+			<ul>
+				<li>Remove Zoom function because of a bug</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
 		<td>2.0.0</td>
 		<td>
 			<ul>
@@ -78,10 +100,6 @@ Shows eBooks in your browser, using turn.js and pdf.js, based on Extbase and Flu
 				<li>Added description of sz_ebook</li>
 			</ul>
 		</td>
-	</tr>
-	<tr>
-		<td><strong>Version</strong></td>
-		<td><strong>Changes:</strong></td>
 	</tr>
 	<tr>
 		<td>1.0.0</td>

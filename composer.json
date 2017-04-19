@@ -1,7 +1,7 @@
 {
   "name": "tildbj/sz-ebook",
   "description": "Shows eBooks in your browser, using turn.js and pdf.js, based on Extbase and Fluid. Works with Tablets and Smartphones.",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "type": "typo3-cms-extension",
   "keywords": ["ebook", "sz_ebook", "flipbook", "HTML5", "responsive"],
   "homepage": "http://sz-ebook.roemmich.eu",
@@ -34,8 +34,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests",
-      "TYPO3\\CMS\\Core\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Classes/"
+      "TildBJ\\SzEbook\\Tests\\": "Tests"
     }
   },
   "config": {

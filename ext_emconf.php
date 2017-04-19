@@ -30,7 +30,7 @@ $EM_CONF[$_EXTKEY] = array(
     'modify_tables' => '',
     'clearCacheOnLoad' => 0,
     'lockType' => '',
-    'version' => '2.0.1',
+    'version' => '2.0.2',
     'constraints' => array(
         'depends' => array(
             'extbase' => '1.3',
@@ -43,6 +43,6 @@ $EM_CONF[$_EXTKEY] = array(
         ),
     ),
     'autoload' => array(
-        'psr-4' => array('Sunzinet\\SzEbook\\' => 'Classes')
+        'psr-4' => array('TildBJ\\SzEbook\\' => 'Classes')
     ),
 );

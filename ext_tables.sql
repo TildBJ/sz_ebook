@@ -6,8 +6,8 @@ CREATE TABLE tx_szebook_domain_model_ebook (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	image text NOT NULL,
-	pdf text NOT NULL,
+	image int(11) unsigned DEFAULT '0' NOT NULL,
+	pdf int(11) unsigned DEFAULT '0' NOT NULL,
 	header varchar(255) DEFAULT '' NOT NULL,
 	scale DOUBLE DEFAULT 0.6 NOT NULL,
 	type int(11) unsigned DEFAULT '0' NOT NULL,

@@ -18,4 +18,4 @@ if (!defined('TYPO3_MODE')) {
 );
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['szEbookFileToFalMigration'] =
-    'Tx_SzEbook_Migration_FileToFalMigration';
+    \TildBJ\SzEbook\Migration\FileToFalMigration::class;
