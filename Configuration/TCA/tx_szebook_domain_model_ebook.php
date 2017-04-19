@@ -2,7 +2,7 @@
 
 return array(
     'ctrl' => array(
-        'title'    => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook',
+        'title' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook',
         'label' => 'header',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -118,26 +118,30 @@ return array(
             'exclude' => 1,
             'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.image',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'image', array(
-                'appearance' => array(
-                    'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+                'image',
+                array(
+                    'appearance' => array(
+                        'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+                    ),
+                    'minitems' => 1,
+                    'maxitems' => 1,
                 ),
-                'minitems' => 1,
-                'maxitems' => 1,
-                ), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
         ),
         'pdf' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.pdf',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'pdf', array(
-                'appearance' => array(
-                    'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:media.addFileReference'
+                'pdf',
+                array(
+                    'appearance' => array(
+                        'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:media.addFileReference'
+                    ),
+                    'minitems' => 1,
+                    'maxitems' => 1,
                 ),
-                'minitems' => 1,
-                'maxitems' => 1,
-                ), 'pdf'
+                'pdf'
             ),
         ),
         'header' => array(
@@ -168,7 +172,10 @@ return array(
                 'type' => 'select',
                 'readOnly' => true,
                 'items' => array(
-                    array('LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.type.0', 0)
+                    array(
+                        'LLL:EXT:sz_ebook/Resources/Private/Language/locallang_db.xml:tx_szebook_domain_model_ebook.type.0',
+                        0
+                    )
                 ),
             ),
         ),
