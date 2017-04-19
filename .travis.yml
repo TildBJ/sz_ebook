@@ -17,4 +17,4 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
 
 script:
-  - .Build/bin/phpcs --standard=PSR2 --extensions=php *
+  - .Build/bin/phpcs -n --standard=PSR2 --extensions=php *

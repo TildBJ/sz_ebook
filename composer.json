@@ -34,8 +34,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests",
-      "TYPO3\\CMS\\Core\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Classes/"
+      "TildBJ\\SzEbook\\Tests": "Tests"
     }
   },
   "config": {
