@@ -18,24 +18,24 @@ plugin.tx_szebook {
 }
 
 page.includeCSS {
-	sz_ebook = EXT:sz_ebook/Resources/Public/Css/main.css
+	sz_ebook = EXT:sz_ebook/Resources/Public/CSS/main.css
 }
 
 page.includeJSFooterlibs {
 	#pdf.js
-	sz_ebook-util = EXT:sz_ebook/Resources/Public/Js/pdf/shared/util.js
-	sz_ebook-api = EXT:sz_ebook/Resources/Public/Js/pdf/display/api.js
-	sz_ebook-metadata = EXT:sz_ebook/Resources/Public/Js/pdf/display/metadata.js
-	sz_ebook-canvas = EXT:sz_ebook/Resources/Public/Js/pdf/display/canvas.js
-	sz_ebook-webgl = EXT:sz_ebook/Resources/Public/Js/pdf/display/webgl.js
-	sz_ebook-pattern_helper = EXT:sz_ebook/Resources/Public/Js/pdf/display/pattern_helper.js
-	sz_ebook-font_loader = EXT:sz_ebook/Resources/Public/Js/pdf/display/font_loader.js
+	sz_ebook-util = EXT:sz_ebook/Resources/Public/JavaScript/pdf/shared/util.js
+	sz_ebook-api = EXT:sz_ebook/Resources/Public/JavaScript/pdf/display/api.js
+	sz_ebook-metadata = EXT:sz_ebook/Resources/Public/JavaScript/pdf/display/metadata.js
+	sz_ebook-canvas = EXT:sz_ebook/Resources/Public/JavaScript/pdf/display/canvas.js
+	sz_ebook-webgl = EXT:sz_ebook/Resources/Public/JavaScript/pdf/display/webgl.js
+	sz_ebook-pattern_helper = EXT:sz_ebook/Resources/Public/JavaScript/pdf/display/pattern_helper.js
+	sz_ebook-font_loader = EXT:sz_ebook/Resources/Public/JavaScript/pdf/display/font_loader.js
 
 	#turn.js
-	sz_ebook-hash = EXT:sz_ebook/Resources/Public/Js/turnjs/hash.js
-	sz_ebook-magazine = EXT:sz_ebook/Resources/Public/Js/turnjs/magazine.js
-	sz_ebook-scissor = EXT:sz_ebook/Resources/Public/Js/turnjs/scissor.min.js
-	sz_ebook-turnjs = EXT:sz_ebook/Resources/Public/Js/turnjs/turn.min.js
+	sz_ebook-hash = EXT:sz_ebook/Resources/Public/JavaScript/turnJavaScript/hash.js
+	sz_ebook-magazine = EXT:sz_ebook/Resources/Public/JavaScript/turnJavaScript/magazine.js
+	sz_ebook-scissor = EXT:sz_ebook/Resources/Public/JavaScript/turnJavaScript/scissor.min.js
+	sz_ebook-turnjs = EXT:sz_ebook/Resources/Public/JavaScript/turnJavaScript/turn.min.js
 
-	init = EXT:sz_ebook/Resources/Public/Js/init.js
+	init = EXT:sz_ebook/Resources/Public/JavaScript/init.js
 }
