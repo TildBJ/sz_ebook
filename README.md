@@ -14,6 +14,22 @@ Shows eBooks in your browser, using turn.js and pdf.js, based on Extbase and Flu
 		<td><strong>Changes:</strong></td>
 	</tr>
 	<tr>
+		<td>2.0.2</td>
+		<td>
+			<ul>
+				<li>Namespace Bugfix</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>2.0.1</td>
+		<td>
+			<ul>
+				<li>Remove Zoom function because of a bug</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
 		<td>2.0.0</td>
 		<td>
 			<ul>
