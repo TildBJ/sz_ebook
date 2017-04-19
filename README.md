@@ -18,6 +18,7 @@ Shows eBooks in your browser, using turn.js and pdf.js, based on Extbase and Flu
 		<td>
 			<ul>
 				<li>Namespace Bugfix</li>
+				<li>Default values for pdf an image</li>
 				<li>Use TYPO3 naming convention (#16)</li>
 			</ul>
 		</td>
