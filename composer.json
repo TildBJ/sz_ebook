@@ -34,7 +34,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "TildBJ\\SzEbook\\Tests": "Tests"
+      "TildBJ\\SzEbook\\Tests\\": "Tests"
     }
   },
   "config": {
