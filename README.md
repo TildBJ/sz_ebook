@@ -14,6 +14,14 @@ Shows eBooks in your browser, using turn.js and pdf.js, based on Extbase and Flu
 		<td><strong>Changes:</strong></td>
 	</tr>
 	<tr>
+		<td>2.0.3</td>
+		<td>
+			<ul>
+				<li>Fix wrong path in TypoScript</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
 		<td>2.0.2</td>
 		<td>
 			<ul>
