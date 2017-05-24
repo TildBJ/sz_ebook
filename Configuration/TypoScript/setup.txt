@@ -32,10 +32,10 @@ page.includeJSFooterlibs {
 	sz_ebook-font_loader = EXT:sz_ebook/Resources/Public/JavaScript/pdf/display/font_loader.js
 
 	#turn.js
-	sz_ebook-hash = EXT:sz_ebook/Resources/Public/JavaScript/turnJavaScript/hash.js
-	sz_ebook-magazine = EXT:sz_ebook/Resources/Public/JavaScript/turnJavaScript/magazine.js
-	sz_ebook-scissor = EXT:sz_ebook/Resources/Public/JavaScript/turnJavaScript/scissor.min.js
-	sz_ebook-turnjs = EXT:sz_ebook/Resources/Public/JavaScript/turnJavaScript/turn.min.js
+	sz_ebook-hash = EXT:sz_ebook/Resources/Public/JavaScript/turnjs/hash.js
+	sz_ebook-magazine = EXT:sz_ebook/Resources/Public/JavaScript/turnjs/magazine.js
+	sz_ebook-scissor = EXT:sz_ebook/Resources/Public/JavaScript/turnjs/scissor.min.js
+	sz_ebook-turnjs = EXT:sz_ebook/Resources/Public/JavaScript/turnjs/turn.min.js
 
 	init = EXT:sz_ebook/Resources/Public/JavaScript/init.js
 }
