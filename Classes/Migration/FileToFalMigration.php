@@ -26,6 +26,7 @@ namespace TildBJ\SzEbook\Migration;
  ***************************************************************/
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 
 /**
  * Class FileToFalMigration
@@ -42,15 +43,16 @@ class FileToFalMigration extends \TYPO3\CMS\Install\Updates\AbstractUpdate
     protected $title = 'SzEbook: Change Filehandling to FAL';
 
     /**
-     * @var \TYPO3\CMS\Core\Database\DatabaseConnection
+     * @var \TYPO3\CMS\Core\Database\Query\QueryBuilder
      */
-    protected $database;
+    protected $queryBuilder;
 
     protected $table = 'tx_szebook_domain_model_ebook';
 
     public function __construct()
     {
-        $this->database = $this->getDatabaseConnection();
+        $this->queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable($this->table);
     }
 
     /**
@@ -83,11 +85,19 @@ class FileToFalMigration extends \TYPO3\CMS\Install\Updates\AbstractUpdate
         foreach ($oldEbooks as $ebook) {
             if (!intval($ebook['image'])) {
                 $uid = $this->migrateFileToFal($ebook['image'], $ebook['uid'], 'image');
-                $this->database->exec_UPDATEquery($this->table, 'uid=' . $ebook['uid'], ['image' => $uid]);
+                $this->queryBuilder
+                    ->update($this->table)
+                    ->where($this->queryBuilder->expr()->eq('uid',$ebook['uid']))
+                    ->set('image', $uid)
+                    ->execute();
             }
             if (!intval($ebook['pdf'])) {
                 $uid = $this->migrateFileToFal($ebook['pdf'], $ebook['uid'], 'pdf');
-                $this->database->exec_UPDATEquery($this->table, 'uid=' . $ebook['uid'], ['pdf' => $uid]);
+                $this->queryBuilder
+                    ->update($this->table)
+                    ->where($this->queryBuilder->expr()->eq('uid', $ebook['uid']))
+                    ->set('pdf', $uid)
+                    ->execute();
             }
         }
 
@@ -99,7 +109,12 @@ class FileToFalMigration extends \TYPO3\CMS\Install\Updates\AbstractUpdate
      */
     protected function getOldEbooks()
     {
-        $ebooks = $this->database->exec_SELECTgetRows('uid, image, pdf', $this->table);
+        $ebooks = $this->queryBuilder
+            ->select('uid', 'image', 'pdf')
+            ->from($this->table)
+            ->execute()
+            ->fetchAll();
+
         $oldEbooks = array();
         foreach ($ebooks as $ebook) {
             if (!intval($ebook['image']) || !intval($ebook['pdf'])) {
@@ -133,7 +148,8 @@ class FileToFalMigration extends \TYPO3\CMS\Install\Updates\AbstractUpdate
 
         $GLOBALS["TYPO3_DB"]->store_lastBuiltQuery = true;
 
-        $this->database->exec_INSERTquery(
+        $databaseConnection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('sys_file_reference');
+        $databaseConnection->insert(
             'sys_file_reference',
             [
                 'uid_local' => $file->getProperty('uid'),
@@ -146,7 +162,8 @@ class FileToFalMigration extends \TYPO3\CMS\Install\Updates\AbstractUpdate
                 'table_local' => 'sys_file',
             ]
         );
-        $lastUid = $this->database->sql_insert_id();
+        $lastUid = $databaseConnection->lastInsertId('sys_file_reference');
+
         return $lastUid;
     }
 }
